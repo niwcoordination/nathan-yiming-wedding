@@ -1,7 +1,7 @@
 {
   "name": "@figma/my-make-file",
   "private": true,
-  "homepage": "https://niwcoordination.github.io/nathan-yiming-wedding",
+  "homepage": ".",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
