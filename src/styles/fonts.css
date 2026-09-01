@@ -1,0 +1,51 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500;600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap'); */
+
+/* CUSRIVE - ENGLISH | NAME*/
+@font-face {
+  font-family: 'WindSong';
+  src: url('../app/fonts/WindSong-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CUSRIVE BLOCK - ENGLISH */
+@font-face {
+  font-family: 'CINZEL';
+  src: url('../app/fonts/Cinzel-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* STANDARD - ENGLISH */
+@font-face {
+  font-family: 'AbhayaLibre';
+  src: url('../app/fonts/AbhayaLibre-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* STANDARD + BLOCK - CHINESE */
+@font-face {
+  font-family: 'NotoSerifSC';
+  src: url('../app/fonts/NotoSerifSC-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CURSIVE - CHINESE */
+@font-face {
+  font-family: 'KaiTi';
+  src: url('../app/fonts/FanzhengKaitiFont-SimplifiedChinese.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+
+
