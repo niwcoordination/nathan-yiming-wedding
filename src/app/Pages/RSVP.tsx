@@ -283,8 +283,9 @@ export default function RSVP() {
     setLoading(true);
     setSubmitError("");
     try {
-      // TODO: API — submitRsvp() will call POST /api/rsvp/submit
-      await submitRsvp(responses);
+      // MODIFIED: Pass household.guestId (the searching user's hash) to authorize the RLS updates
+      await submitRsvp(responses, household.guestId);
+      
       setStep("submitted");
       setIsEditing(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -412,7 +413,7 @@ export default function RSVP() {
                     {memberCount === 1 ? "Your invitation" : `Household · ${memberCount} guests`}
                   </p>
                   <h1 style={{ fontFamily: C.FONT_CURSIVE, fontSize: "clamp(2.5rem, 8vw, 3.8rem)", color: C.DEEP_BLUE, lineHeight: 1.1 }}>
-                    {household.householdId}
+                    {household.householdName}
                   </h1>
                   <div className="flex items-center gap-3 justify-center mt-4 mb-4">
                     <div className="h-px w-12" style={{ background: C.GOLD }} />

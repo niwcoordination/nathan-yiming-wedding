@@ -9,6 +9,7 @@ export interface HouseholdMember {
 
 export interface Household {
   householdId: string;
+  householdName: string; //household name
   guestId: string;
   members: HouseholdMember[]; // optional, if you want to display a household name
   allAccepted?: boolean; // true if all members have accepted, false if not responded
