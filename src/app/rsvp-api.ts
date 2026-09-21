@@ -1,26 +1,7 @@
+// Import the single instance and our contextual helper
 import supabase from "../config/superbaseClient";
 import type { MemberResponse, Household, HouseholdMember, GuestLookupCriteria } from "./components/Interfaces";
 
-// // ── RLS Helper Function ────────────────────────────────────────────────────────
-// // This generates a temporary client instance carrying the user's secure header
-// function getScopedClient(userHash: string) {
-//   // It copies your base client configuration and injects the header seamlessly
-//   return supabase.auth.session ? supabase : (supabase as any).clone ? (supabase as any).clone({
-//     global: { headers: { 'x-user-id': userHash } }
-//   }) : supabase; 
-  
-//   // Alternative fallback if your Supabase configuration is standard:
-//   // return require('@supabase/supabase-js').createClient('YOUR_URL', 'YOUR_ANON_KEY', {
-//   //   global: { headers: { 'x-user-id': userHash } }
-//   // });
-// }
-
-// Simple header fallback pattern directly on global configuration works too:
-function setSupabaseHeader(userHash: string) {
-  (supabase as any).rest.headers['x-user-id'] = userHash;
-}
-
-// ── API Functions ────────────────────────────────────────────────────────────────
 export async function hashName(firstName: string, lastName: string): Promise<string> {
   const hashKey = `${firstName.toLowerCase().trim()}${lastName.toLowerCase().trim()}`;
   const data = new TextEncoder().encode(hashKey);
@@ -31,56 +12,39 @@ export async function hashName(firstName: string, lastName: string): Promise<str
     .join("");
 }
 
-// MODIFIED: Pass the active searching user's hash down to secure the transaction
-export async function fetchAllHouseholdUsers(householdID: string, searcherHash: string): Promise<any | null> {
-    setSupabaseHeader(searcherHash); // Injects header dynamically before selection
-    const { data, error } = await supabase
-      .from('UsersTable')
-      .select('*')
-      .eq('householdID', householdID)
-
-      if(error) {
-        console.error('Error fetching household users:', error);
-        return null;
-      }
-      if(!data) {
-        console.log('No user found with the given name.');
-        return null;
-      }
-      return data;
-}
-
-// MODIFIED: Injects the calculated header to pass RLS verification
 export async function fetchUser(hash: string): Promise<any | null> {
-    setSupabaseHeader(hash); // Injects header dynamically before selection
     const { data, error } = await supabase
-      .from('UsersTable')
-      .select('*')
-      .eq('userID', hash)
+      .rpc('secure_search_user', { search_hash: hash })
       .single();
 
-      console.log("This is the new Code");
-      if(error) {
-        console.error('Error fetching user:', error);
-        return null;
-      }
-      if(!data) {
-        console.log('No user found with the given name.');
-        return null;
-      }
-      return data;
+    if (error) {
+      console.error('Error fetching user:', error);
+      return null;
+    }
+    return data;
+}
+
+export async function fetchAllHouseholdUsers(householdID: string, searcherHash: string): Promise<any | null> {
+    const { data, error } = await supabase
+      .rpc('secure_fetch_household', { 
+        search_hash: searcherHash, 
+        target_household_id: householdID 
+      });
+
+    if (error) {
+      console.error('Error fetching household users:', error);
+      return null;
+    }
+    return data;
 }
 
 export async function provideResults(hash: string): Promise<Household | null> {
   const primaryUser = await fetchUser(hash);
-  if (!primaryUser) {
-    return null;
-  }
-  // MODIFIED: Forwarding the searcher's hash to authenticate the household lookup query
+  if (!primaryUser) return null;
+
   const householdUsers = await fetchAllHouseholdUsers(primaryUser.householdID, hash);
-  if (!householdUsers) {
-    return null;
-  }
+  if (!householdUsers) return null;
+
   const responsePayload: Household = {
     householdId: primaryUser.householdID,
     householdName: primaryUser.householdName,
@@ -94,46 +58,32 @@ export async function provideResults(hash: string): Promise<Household | null> {
     })),
     allAccepted: !householdUsers.every((member: any) => member.acceptance === null),
   };
-  return responsePayload.guestId ? responsePayload : null;
+  return responsePayload;
 }
 
-export async function lookupGuest({ 
-    firstName, 
-    lastName, 
-    guestId 
-}: GuestLookupCriteria): Promise<Household | null> {
+export async function lookupGuest({ firstName, lastName, guestId }: GuestLookupCriteria): Promise<Household | null> {
   if (firstName && lastName) {
     guestId = await hashName(firstName, lastName);
   }
-  const results = await provideResults(guestId ? guestId : "");
-  return results?.guestId ? results : null;
+  return await provideResults(guestId ? guestId : "");
 }
 
-// MODIFIED: Now passes the active member's hash on loop iterations so 
-// the RLS policy validates the update context correctly.
 export async function submitRsvp(
   responses: Record<string, MemberResponse>,
-  activeSearcherHash: string // ADDED parameter: Pass the root searcher's hash back to validate the updates
+  activeSearcherHash: string,
+  householdID: string
 ): Promise<void> {
-
-  setSupabaseHeader(activeSearcherHash);
-
   for (const [memberId, response] of Object.entries(responses)) {
-    console.log("Member ID:", memberId);
-    console.log("RSVP Status:", response.rsvp);
-    console.log("Dietary Requirements:", response.dietary);
-
     const { error } = await supabase
-      .from('UsersTable')
-      .update({
-        'acceptance': response.rsvp,
-        'dietary': response.dietary.trim()
-      })
-      .eq('userID', memberId);
+      .rpc('secure_update_rsvp', {
+        search_hash: activeSearcherHash,
+        target_household_id: householdID,
+        member_id: memberId,
+        rsvp_status: response.rsvp,
+        dietary_reqs: response.dietary
+      });
   
-    if (error) {
-      throw new Error(error.message);
-    }
+    if (error) throw new Error(error.message);
   }
 } 
 

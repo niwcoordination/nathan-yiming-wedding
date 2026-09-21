@@ -16,4 +16,6 @@ export const router = createBrowserRouter([
       { path: "invitation", Component: Invitation },
     ],
   },
-]);
+], {
+  basename: "/nathan-yiming-wedding"
+});

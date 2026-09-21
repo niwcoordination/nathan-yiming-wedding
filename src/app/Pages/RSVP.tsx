@@ -5,7 +5,7 @@ import { Check, X, Search, ChevronRight, RotateCcw } from "lucide-react";
 import {
   lookupGuest,
   submitRsvp,
-  initResponses,
+  initResponses
 } from "../rsvp-api";
 
 import * as C from "../Constants";
@@ -283,8 +283,7 @@ export default function RSVP() {
     setLoading(true);
     setSubmitError("");
     try {
-      // MODIFIED: Pass household.guestId (the searching user's hash) to authorize the RLS updates
-      await submitRsvp(responses, household.guestId);
+      await submitRsvp(responses, household.guestId, household.householdId);
       
       setStep("submitted");
       setIsEditing(false);
@@ -301,6 +300,7 @@ export default function RSVP() {
     // In production, the stored responses live in the database, not localStorage.
     // if (household) localStorage.removeItem(`${Constants.STORAGE_KEY_RESPONSES}_${household.householdId}`);
     localStorage.removeItem(C.GUEST_ID_KEY);
+
     setHousehold(null);
     setResponses({});
     setFirstName("");
