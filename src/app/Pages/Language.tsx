@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 
 import * as C from "../Constants";
-import { GoldDivider, GoldDividerThin } from "../components/Divider";
+import { GoldDivider } from "../components/Divider";
 import { NavBar } from "../components/NavBar";
 
 import * as LC from "../language/LangaugeAndTimeConstants";
