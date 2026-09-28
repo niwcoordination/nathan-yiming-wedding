@@ -11,7 +11,7 @@ import { getActiveLanguage } from "./language/translation";
 
 //Local Storage Object Key for storing the guest ID (hash) of the person searching for their RSVP
 export const GUEST_ID_KEY = "rsvp_guest_id";
-export const WEBSITE_URL = "http://localhost:5173"
+export const WEBSITE_URL = "yimingandnathan.com";
 const ACTIVE_LANGUAGE = getActiveLanguage();
 
 
@@ -19,7 +19,7 @@ const ACTIVE_LANGUAGE = getActiveLanguage();
 export const VENUE_MAPS_QUERY = "1548+Melba+Hwy,+Dixons+Creek+VIC+3775,+Australia";
 
 //Contact Details
-export const CONTACT_EMAIL = "hello@yimingandnathan.com.au";
+export const CONTACT_EMAIL = "n.i.r.coodination.com";
 
 //Colours
 export const GOLD = "#c9a84c";

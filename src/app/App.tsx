@@ -23,7 +23,6 @@ const IMAGES_TO_PRELOAD = [inkImage, envelopeTexture];
 // as they are defined in your @font-face / Global CSS configuration.
 const FONTS_TO_PRELOAD = [
   { name: 'AbhayaLibre', src: abhayaLibre },
-  { name: 'Beau Rivage', src: beauRivage },
   { name: 'CINZEL', src: cinzel },
   { name: 'KaiTi', src: fanzheng },
   { name: 'Lovelight', src: lovelight },
@@ -102,7 +101,6 @@ const styles = {
     borderTop: `5px solid ${GOLD}`, // Elegant moving Gold arc pointer
     borderRadius: '50%',
     animation: 'spin 1s linear infinite',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.05)', // Soft shadow track
   },
   spinnerText: {
     marginTop: '25px',
