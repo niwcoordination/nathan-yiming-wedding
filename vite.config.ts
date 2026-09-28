@@ -18,7 +18,7 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
-  base:'/nathan-yiming-wedding/',
+  base:'/',
   plugins: [
   
     figmaAssetResolver(),
