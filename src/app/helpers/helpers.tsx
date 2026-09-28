@@ -9,7 +9,7 @@ export function getReturnPath() {
 }
 
 export function setReturnPath() {
-    sessionStorage.setItem("lastNonLanguagePage", window.location.pathname);
+    sessionStorage.setItem("lastNonLanguagePage", (window.location.pathname + window.location.search));
 
 }
 

@@ -39,7 +39,7 @@ function LinkComponent() {
   return (
     <a 
       className="block pt-2 underline opacity-90 hover:opacity-100 hover:text-blue-600 transition-all break-all" 
-      style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE, fontWeight: 500, fontSize: "0.8rem" }}
+      style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE, fontWeight: 500, fontSize: "0.8rem" }}
       href={`${C.WEBSITE_URL}`}
       onClick={handleLinkClick}
       >
@@ -58,7 +58,7 @@ const Card1 = () => {
           <p 
             className="m-0" 
             style={{ 
-              fontFamily: C.FONT_BLOCK, 
+              fontFamily: C.FONT_BLOCK(), 
               color: C.DEEP_BLUE, 
               fontSize: "1rem", 
               fontWeight: 500,
@@ -71,7 +71,7 @@ const Card1 = () => {
               </span>
             ))}
           </p>
-          <h2 className="m-0" style={{ fontFamily: C.NAME_FONT, color: C.DEEP_BLUE, fontSize: "2rem", fontWeight: 400, lineHeight: 1.5 }}>
+          <h2 className="m-0" style={{ fontFamily: C.NAME_FONT(), color: C.DEEP_BLUE, fontSize: "2rem", fontWeight: 400, lineHeight: 1.5 }}>
             {LC.NAMES}
           </h2>
         </div>
@@ -84,20 +84,20 @@ const Card2 = () => {
     <>
       <div className="absolute inset-0 p-4 pt-8 flex flex-col justify-between items-center scale-95 sm:scale-100 origin-top">
         <div className="text-top">
-          <p className="m-0" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE, fontSize: "1rem", fontWeight: 500 }}>
+          <p className="m-0" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE, fontSize: "1rem", fontWeight: 500 }}>
             {selectedLanguage.DATES.WEDDING_DATE}
           </p>
-          <p className="m-0" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE, fontSize: "0.8rem", fontWeight: 500 }}>
+          <p className="m-0" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE, fontSize: "0.8rem", fontWeight: 500 }}>
             {selectedLanguage.INVITATION.CEREMONY_COMMENCEMENT[0]}{selectedLanguage.DATES.CEREMONY_START_TIME}{selectedLanguage.INVITATION.CEREMONY_COMMENCEMENT[1]}
           </p>
-          <p className="m-0 mb-4" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE, fontSize: "0.8rem", fontWeight: 500 }}>
+          <p className="m-0 mb-4" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE, fontSize: "0.8rem", fontWeight: 500 }}>
             {selectedLanguage.INVITATION.RECEPTION_TO_FOLLOW}
           </p>
 
-           <p className="m-0" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE, fontSize: "0.8rem", fontWeight: 500 }}>
+           <p className="m-0" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE, fontSize: "0.8rem", fontWeight: 500 }}>
             {selectedLanguage.LOCATION.VENUE_NAME}
           </p>
-           <p className="m-0" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE, fontSize: "0.7rem", fontWeight: 500 }}>
+           <p className="m-0" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE, fontSize: "0.7rem", fontWeight: 500 }}>
             {LC.VENUE_ADDRESS}
           </p>
         </div>
@@ -111,10 +111,10 @@ const Card3 = () => {
     <>
       <div className="absolute inset-0 pt-16 flex flex-col justify-between items-center scale-95 sm:scale-100 origin-bottom-left">
         <div className="text-center leading-snug">
-          <h2 className="m-0" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE, fontSize: "1.2rem", fontWeight: 500, lineHeight: 1.1 }}>
+          <h2 className="m-0" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE, fontSize: "1.2rem", fontWeight: 500, lineHeight: 1.1 }}>
             {selectedLanguage.INVITATION.DETAILS_HEADER}
           </h2>
-          <p className="m-0 ml-5 mr-5 mt-2" style={{ fontFamily: C.FONT_BLOCK, color: C.PURPLE, fontSize: "0.8rem", fontWeight: 500, lineHeight: 1.2}}>
+          <p className="m-0 ml-5 mr-5 mt-2" style={{ fontFamily: C.FONT_BLOCK(), color: C.PURPLE, fontSize: "0.8rem", fontWeight: 500, lineHeight: 1.2}}>
             {selectedLanguage.INVITATION.DETAILS_BODY} 
             <LinkComponent />
           </p>
@@ -129,17 +129,17 @@ const Card4 = () => {
     <>
       <div className="absolute inset-0 pl-1 pb-7 pt-2 flex flex-col justify-between items-start scale-95 sm:scale-100 origin-bottom-left">
         <div className="text-left leading-none">
-          <h2 className="m-0 ml-4" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE, fontSize: "2rem", fontWeight: 500, lineHeight: 1.2 }}>
+          <h2 className="m-0 ml-4" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE, fontSize: "2rem", fontWeight: 500, lineHeight: 1.2 }}>
             {selectedLanguage.NAV.RSVP}
           </h2>
-          <p className="m-0 ml-4" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE, fontSize: "0.9rem", fontWeight: 500 }}>
+          <p className="m-0 ml-4" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE, fontSize: "0.9rem", fontWeight: 500 }}>
             {selectedLanguage.INVITATION.REPLY_BY[0]} {selectedLanguage.DATES.CUTOFF_RSVP_DATE} {selectedLanguage.INVITATION.REPLY_BY[1]}
           </p>
         </div>
         <div className="w-full flex flex-row items-center justify-end">
           <ParameterQRGenerator size={100} />
           <div className="text-left leading-tight">
-            <p className="m-0" style={{ fontFamily: C.FONT_BLOCK, color: C.PURPLE, fontSize: "0.7rem", fontWeight: 500, marginRight: "6.5rem", marginLeft: "0.5rem" }}>
+            <p className="m-0" style={{ fontFamily: C.FONT_BLOCK(), color: C.PURPLE, fontSize: "0.7rem", fontWeight: 500, marginRight: "6.5rem", marginLeft: "0.5rem" }}>
               {selectedLanguage.INVITATION.SCAN_TO_RSVP}
             </p>
           </div>

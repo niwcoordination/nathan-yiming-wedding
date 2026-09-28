@@ -21,7 +21,7 @@ export default function Language() {
   const hasStoredLanguage = !!localStorage.getItem("language");
 
   return (
-    <div className="relative min-h-screen flex flex-col" style={{ fontFamily: C.FONT_STANDARD }}>
+    <div className="relative min-h-screen flex flex-col" style={{ fontFamily: C.FONT_STANDARD() }}>
       <BackgroundImage />
       <div className="relative flex flex-col min-h-screen" style={{ zIndex: 1 }}>
         {/* NAVBAR */}
@@ -35,7 +35,7 @@ export default function Language() {
         <p 
           className="tracking-[0.35em] uppercase mb-5 text-center" 
           style={{ 
-            fontFamily: C.FONT_BLOCK, 
+            fontFamily: C.FONT_BLOCK(), 
             color: C.PURPLE,  
             fontSize: 'clamp(1.2rem, 4vw, 1.25rem)' // Dynamically shrinks on small screens
           }}
@@ -47,9 +47,9 @@ export default function Language() {
         <h1 
           className="leading-none mb-5 text-center text-5xl sm:text-7xl md:text-8xl" 
           style={{ 
-            fontFamily: C.NAME_FONT, 
+            fontFamily: C.NAME_FONT(), 
             color: C.DEEP_BLUE,
-            fontSize: '6rem'
+            fontSize: 'clamp(5rem, 5.5rem , 6rem)'
           }}
         >
           {LC.NAMES}
@@ -57,14 +57,14 @@ export default function Language() {
 
         <GoldDivider />
 
-          <p className="text-xs tracking-[0.25em] mb-2 text-center" style={{ fontSize: "1rem", fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE }}>
+          <p className="text-xs tracking-[0.25em] mb-2 text-center" style={{ fontSize: "1rem", fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>
             {format(LC.WEDDING_DATE, 'dd MMM yyyy')} · {format(LC.WEDDING_DATE, 'PPP', { locale: zhCN })}
           </p>
           <div className="mb-12 text-center space-y-1">
-            <p className="text-xs tracking-[0.2em] uppercase" style={{ fontSize: "1.2rem", fontFamily: C.FONT_BLOCK, color: C.PURPLE }}>
+            <p className="text-xs tracking-[0.2em] uppercase" style={{ fontSize: "1.2rem", fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>
               {LC.LANGUAGE_TEXT}
             </p>
-            <p className="text-xs tracking-[0.15em]" style={{ fontSize: "1.2rem", fontFamily: C.FONT_BLOCK, color: C.PURPLE }}>
+            <p className="text-xs tracking-[0.15em]" style={{ fontSize: "1.2rem", fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>
               {LC.LANGUAGE_TEXT_CN}
             </p>
           </div>
@@ -79,8 +79,8 @@ export default function Language() {
             >
               <span style={{ fontSize: "2.5rem", lineHeight: 1 }}>{LC.AU}</span>
               <div className="text-center">
-                <p className="text-base tracking-[0.25em] uppercase mb-1" style={{ fontSize: "1rem",fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE }}>{LC.ENGLISH}</p>
-                <p className="text-xs tracking-wider" style={{fontSize: "1rem", color: C.GREY, fontFamily: C.FONT_STANDARD }}>{LC.CONTINUE_EN}</p>
+                <p className="text-base tracking-[0.25em] uppercase mb-1" style={{ fontSize: "1rem",fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>{LC.ENGLISH}</p>
+                <p className="text-xs tracking-wider" style={{fontSize: "1rem", color: C.GREY, fontFamily: C.FONT_STANDARD() }}>{LC.CONTINUE_EN}</p>
               </div>
               <div className="h-px w-8 transition-all duration-300 group-hover:w-14" style={{ background: C.GOLD }} />
             </button>
@@ -92,8 +92,8 @@ export default function Language() {
             >
               <span style={{ fontSize: "2.5rem", lineHeight: 1 }}>{LC.CN}</span>
               <div className="text-center">
-                <p className="text-base tracking-[0.25em] uppercase mb-1" style={{ fontSize: "1rem", fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE }}>{LC.CHINESE}</p>
-                <p className="text-xs tracking-wider" style={{fontSize: "1rem", color: C.GREY, fontFamily: C.FONT_STANDARD }}>{LC.CONTINUE_CN}</p>
+                <p className="text-base tracking-[0.25em] uppercase mb-1" style={{ fontSize: "1rem", fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>{LC.CHINESE}</p>
+                <p className="text-xs tracking-wider" style={{fontSize: "1rem", color: C.GREY, fontFamily: C.FONT_STANDARD() }}>{LC.CONTINUE_CN}</p>
               </div>
               <div className="h-px w-8 transition-all duration-300 group-hover:w-14" style={{ background: C.GOLD }} />
             </button>

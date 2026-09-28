@@ -70,7 +70,7 @@ export const zh: Translation = {
     },
     CONFIRMATION: {
       HERO_MESSAGE: "已确认",
-      CONFIRMED_HEADING: "非常感谢！",
+      CONFIRMED_HEADING: "非常感谢!",
       MSG_ATTENDING: (n: number) => `我们迫不及待地想在 7 月 17 日与您${n === 1 ? "" : "各位"}一同庆祝！`,
       MSG_DECLINED: "很抱歉您无法出席。非常感谢您告知我们。",
       BTN_EDIT: "修改我的回复",

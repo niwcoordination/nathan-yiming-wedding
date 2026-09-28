@@ -51,10 +51,10 @@ function Countdown() {
     <div className="flex gap-5 md:gap-10 justify-center">
       {units.map(({ label, value }) => (
         <div key={label} className="flex flex-col items-center min-w-[3rem]">
-          <span className="tabular-nums leading-none" style={{ fontFamily: C.FONT_BLOCK, fontSize: "clamp(2rem, 6vw, 3.5rem)", fontWeight: 400, color: C.DEEP_BLUE }}>
+          <span className="tabular-nums leading-none" style={{ fontFamily: C.FONT_BLOCK(), fontSize: "clamp(2rem, 6vw, 3.5rem)", fontWeight: 400, color: C.DEEP_BLUE }}>
             {String(value).padStart(2, "0")}
           </span>
-          <span className="text-xs tracking-[0.2em] mt-2" style={{fontSize: "clamp(0.8rem, 3vw, 1.2rem)", fontFamily: C.FONT_BLOCK, color: C.PURPLE }}>
+          <span className="text-xs tracking-[0.2em] mt-2" style={{fontSize: "clamp(0.8rem, 3vw, 1.2rem)", fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>
             {label}
           </span>
         </div>
@@ -71,7 +71,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   return (
     <div className="border-b" style={{ borderColor: "rgba(201,168,76,0.2)" }}>
       <button className="w-full text-left py-5 flex justify-between items-center gap-4 group" onClick={() => setOpen((v) => !v)}>
-        <span className="text-sm leading-snug group-hover:opacity-70 transition-opacity" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE }}>
+        <span className="text-sm leading-snug group-hover:opacity-70 transition-opacity" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>
           {question}
         </span>
         <ChevronDown size={15} style={{ color: C.DARK_GOLD, transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s ease", flexShrink: 0 }} />
@@ -102,7 +102,7 @@ export default function Main() {
 
   setReturnPath();
   return (
-     <div className="relative min-h-screen" style={{ fontFamily: C.FONT_STANDARD }}>
+     <div className="relative min-h-screen" style={{ fontFamily: C.FONT_STANDARD() }}>
        {/* Fixed background — same as main site */}
        <BackgroundImage />
        <div className="relative" style={{ zIndex: 1 }}>
@@ -112,11 +112,11 @@ export default function Main() {
         {/* ── Hero ──────────────────────────────────────────────────────── */}
         <section id="details" className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden">
           <div className="px-6 pt-28 pb-20 w-full max-w-lg mx-auto">
-            <p className="text-xs mb-7 tracking-[0.25em] uppercase" style={{ fontSize: "1rem", fontFamily: C.FONT_BLOCK, color: C.PURPLE }}>
+            <p className="text-xs mb-7 tracking-[0.25em] uppercase" style={{ fontSize: "1rem", fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>
               {selectedLanguage.MAIN_PAGE.CELEBRATE_MSG}
             </p>
       
-            <h1 className="-ml-[1.5rem] md:-ml-[4rem] md:ml-0 leading-none mb-5 flex flex-col items-center" style={{ fontFamily: C.NAME_FONT, fontSize: "clamp(5rem, 12vw, 8rem)", color: C.DEEP_BLUE }}>
+            <h1 className="-ml-[1.5rem] md:-ml-[4rem] md:ml-0 leading-none mb-5 flex flex-col items-center" style={{ fontFamily: C.NAME_FONT(), fontSize: "clamp(5rem, 12vw, 8rem)", color: C.DEEP_BLUE }}>
               {NAMES.split(' ').map((part, index) => (
                 <span key={index}>{part}</span>
               ))}
@@ -124,10 +124,10 @@ export default function Main() {
 
             <GoldDividerThin />
 
-            <p className="text-sm md:text-base tracking-[0.3em] uppercase mb-2" style={{fontSize: "1rem", fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE }}>
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase mb-2" style={{fontSize: "1rem", fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>
               {selectedLanguage.DATES.WEDDING_DATE}
             </p>
-            <p className="text-xs tracking-[0.2em] uppercase mb-12" style={{fontSize: "1rem", fontFamily: C.FONT_BLOCK, color: C.PURPLE }}>
+            <p className="text-xs tracking-[0.2em] uppercase mb-12" style={{fontSize: "1rem", fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>
               {selectedLanguage.LOCATION.VENUE_NAME_SHORT}
             </p>
             <div className="mb-12">
@@ -169,7 +169,7 @@ export default function Main() {
                 </div>
               </div>
               <div>
-                <h2 className="text-xl md:text-2xl mb-8" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE }}>Order of the Day</h2>
+                <h2 className="text-xl md:text-2xl mb-8" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>Order of the Day</h2>
                 <div>
                   {selectedLanguage.SCHEDULE.map((item, i) => (
                     <div key={i} className="flex gap-4">
@@ -178,8 +178,8 @@ export default function Main() {
                         {i < selectedLanguage.SCHEDULE.length - 1 && <div className="w-px flex-1 mt-1 mb-1" style={{ background: `linear-gradient(to bottom, ${C.GOLD}50, ${C.PURPLE}25)` }} />}
                       </div>
                       <div className="pb-5">
-                        <p className="text-xs tracking-[0.18em] uppercase mb-0.5" style={{ fontFamily: C.FONT_BLOCK, color: C.DARK_GOLD }}>{item.time}</p>
-                        <p className="font-medium text-sm mb-0.5" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE }}>{item.event}</p>
+                        <p className="text-xs tracking-[0.18em] uppercase mb-0.5" style={{ fontFamily: C.FONT_BLOCK(), color: C.DARK_GOLD }}>{item.time}</p>
+                        <p className="font-medium text-sm mb-0.5" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>{item.event}</p>
                         <p className="text-xs leading-relaxed" style={{ color: "#555" }}>{item.detail}</p>
                       </div>
                     </div>
@@ -196,7 +196,7 @@ export default function Main() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
               <div>
-                <h2 className="text-xl md:text-2xl mb-5" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE }}>{selectedLanguage.LOCATION.VENUE_NAME_SHORT}</h2>
+                <h2 className="text-xl md:text-2xl mb-5" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>{selectedLanguage.LOCATION.VENUE_NAME_SHORT}</h2>
                 <p className="text-sm leading-loose mb-3" style={{ color: "#444" }}>
                   Nestled in the heart of the Yarra Valley wine country, Immerse is a stunning estate offering sweeping vineyard panoramas, lush gardens, and world-class facilities — a perfect backdrop for our celebration.
                 </p>
@@ -208,7 +208,7 @@ export default function Main() {
                 <div className="p-5 md:p-6" style={{ border: `1px solid ${C.GOLD}35`, borderRadius: "2px" }}>
                   <div className="flex items-center gap-2 mb-4">
                     <span style={{ color: C.GOLD, fontSize: "0.75rem" }}>✦</span>
-                    <h3 className="text-sm tracking-wider" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE }}>Chartered Bus Service</h3>
+                    <h3 className="text-sm tracking-wider" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>Chartered Bus Service</h3>
                   </div>
                   <p className="text-xs leading-loose mb-1" style={{ color: "#444" }}>
                     We are delighted to offer a complimentary chartered bus for guests travelling from Melbourne CBD — both ways, so you can celebrate freely.
@@ -250,7 +250,7 @@ export default function Main() {
         <GoldDividerWithText label="Registry" />
         <Section id="registry" className="px-5 md:px-10 py-14">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-xl md:text-2xl mb-8" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE }}>Gifts & Registry</h2>
+            <h2 className="text-xl md:text-2xl mb-8" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>Gifts & Registry</h2>
             <div className="px-8 py-10 md:px-14 md:py-14" style={{ border: `1px solid ${C.GOLD}30`, borderRadius: "2px" }}>
               <span style={{ color: C.GOLD, fontSize: "1.4rem", display: "block", marginBottom: "1.5rem" }}>✦</span>
               <p className="text-sm md:text-base leading-loose italic" style={{ fontFamily: "Raleway, sans-serif", color: "#444" }}>
@@ -264,7 +264,7 @@ export default function Main() {
         <GoldDividerWithText label="Questions" />
         <Section id="faq" className="px-5 md:px-10 py-14">
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-xl md:text-2xl mb-2 text-center" style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE }}>Frequently Asked Questions</h2>
+            <h2 className="text-xl md:text-2xl mb-2 text-center" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>Frequently Asked Questions</h2>
             <p className="text-center text-xs tracking-wider mb-10" style={{ color: "#666", fontFamily: "Raleway, sans-serif" }}>
               Everything you need to know about the day.
             </p>
@@ -275,7 +275,7 @@ export default function Main() {
               <p className="text-sm mb-5" style={{ color: "#555", fontFamily: "Raleway, sans-serif" }}>
                 Still have a question? We would love to hear from you.
               </p>
-              <a href="mailto:hello@yimingandnathan.com.au" className="inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase pb-px border-b transition-opacity hover:opacity-60" style={{ fontFamily: C.FONT_BLOCK, color: C.DARK_GOLD, borderColor: `${C.DARK_GOLD}60` }}>
+              <a href="mailto:hello@yimingandnathan.com.au" className="inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase pb-px border-b transition-opacity hover:opacity-60" style={{ fontFamily: C.FONT_BLOCK(), color: C.DARK_GOLD, borderColor: `${C.DARK_GOLD}60` }}>
                 Get in Touch
               </a>
             </div>

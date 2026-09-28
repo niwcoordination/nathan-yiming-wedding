@@ -71,7 +71,7 @@ export const en: Translation = {
     CONFIRMATION: {
       HERO_MESSAGE: "Confirmed",
       CONFIRMED_HEADING: "Thank you!",
-      MSG_ATTENDING: (n: number) => `We can't wait to celebrate with ${n === 1 ? "you" : `all ${n} of you`} on the 17th of July!`,
+      MSG_ATTENDING: (n: number) => `We can't wait to celebrate with ${n === 1 ? "you" : `the ${n} of you`} on the ${format(WEDDING_DATE, 'dd MMMM yyyy')}!`,
       MSG_DECLINED: "We're sorry you won't be able to join us. Thank you for letting us know.",
       BTN_EDIT: "Edit my RSVP",
       NOT_MY_RSVP: "Not your RSVP? Search again",

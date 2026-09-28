@@ -20,14 +20,14 @@ export function NavBar(){
   const [isOpen, setIsOpen] = useState(false);
 
   //Navigate to language page if no language is provided 
-  useEffect(() => {
-    if (!hasStoredLanguage) {
-      const isOnLanguagePage = window.location.pathname.endsWith("/language");
-      if (!isOnLanguagePage) {
-         navigate({ pathname: "/language" });
-      }
-    }
-  }, [hasStoredLanguage, navigate]);
+  // useEffect(() => {
+  //   if (!hasStoredLanguage) {
+  //     const isOnLanguagePage = window.location.pathname.endsWith("/language");
+  //     if (!isOnLanguagePage) {
+  //        navigate({ pathname: "/language" });
+  //     }
+  //   }
+  // }, [hasStoredLanguage, navigate]);
 
   //Do not show header bar if no language is provided
   if (!hasStoredLanguage) {
@@ -49,7 +49,7 @@ export function NavBar(){
           <Link 
             to="/"
             className="hover:opacity-60 flex-shrink-0"
-            style={{ fontFamily: C.NAME_FONT, color: C.DEEP_BLUE, lineHeight: 1 }}
+            style={{ fontFamily: C.NAME_FONT(), color: C.DEEP_BLUE, lineHeight: 1 }}
             onClick={() => setIsOpen(false)}>
             <span className="hidden lg:inline px-10" style={{ fontSize: "1.75rem" }}>{NAMES}</span>
             <span className="lg:hidden px-4" style={{ fontSize: "1.75rem" }}>{INITIALS}</span>
@@ -63,7 +63,7 @@ export function NavBar(){
               key={id}
               className="text-xs tracking-[0.2em] uppercase transition-opacity hover:opacity-50"
               style={{ 
-                fontFamily: C.FONT_BLOCK, 
+                fontFamily: C.FONT_BLOCK(), 
                 color: C.DEEP_BLUE }}>
               {label}
             </Link>
@@ -139,7 +139,7 @@ export function NavBar(){
               onClick={() => setIsOpen(false)}
               className="text-xs tracking-[0.2em] uppercase py-3 w-full text-center transition-opacity hover:opacity-50 block"
               style={{ 
-                fontFamily: C.FONT_BLOCK, 
+                fontFamily: C.FONT_BLOCK(), 
                 color: C.DEEP_BLUE }}>
               {label}
             </Link>

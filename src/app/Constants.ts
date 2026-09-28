@@ -12,7 +12,7 @@ import { getActiveLanguage } from "./language/translation";
 //Local Storage Object Key for storing the guest ID (hash) of the person searching for their RSVP
 export const GUEST_ID_KEY = "rsvp_guest_id";
 export const WEBSITE_URL = "yimingandnathan.com";
-const ACTIVE_LANGUAGE = getActiveLanguage();
+// const ACTIVE_LANGUAGE = getActiveLanguage();
 
 
 // Maps embed uses the address — regenerate the iframe src if it changes
@@ -44,10 +44,25 @@ export const GREY_BORDERS = GREY + "30";
 export const GREY_BACKGROUND = GREY + "20";
 
 
+
+
 //Fonts
 
+const fontRegistry = {
+  get FONT_CURSIVE() {
+    return getActiveLanguage() === "zh" ? "'KaiTi', serif" : "'WindSong', serif";
+  },
+  get FONT_STANDARD() {
+    return getActiveLanguage() === "zh" ? "'NotoSerifSC', serif" : "'AbhayaLibre', serif";
+  },
+  get FONT_BLOCK() {
+    return getActiveLanguage() === "zh" ? "'NotoSerifSC', serif" : "'CINZEL', sans-serif";
+  }
+};
 
-export const NAME_FONT = "'WindSong', sans-serif";
-export const FONT_CURSIVE = ACTIVE_LANGUAGE==="zh"? "'KaiTi', serif" : "'WindSong', sans-serif"; 
-export const FONT_STANDARD = ACTIVE_LANGUAGE==="zh"? "'NotoSerifSC', serif" : "'AbhayaLibre', sans-serif";
-export const FONT_BLOCK = ACTIVE_LANGUAGE==="zh"? "'NotoSerifSC', sans-serif" : "'CINZEL', serif";
+export const NAME_FONT   = () => "'WindSong', sans-serif";
+export const FONT_CURSIVE  = () => fontRegistry.FONT_CURSIVE;
+export const FONT_STANDARD = () => fontRegistry.FONT_STANDARD;
+export const FONT_BLOCK    = () => fontRegistry.FONT_BLOCK;
+
+// NAME_FONT = ACTIVE_LANGUAGE==="zh"? "'KaiTi', serif" : "'WindSong', serif";

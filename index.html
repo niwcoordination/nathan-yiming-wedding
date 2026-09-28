@@ -2,6 +2,20 @@
   <!DOCTYPE html>
   <html lang="en">
     <head>
+      <!-- At the very top of your index.html <head> -->
+      <script type="text/javascript">
+        (function(l) {
+          if (l.search[1] === '/' ) {
+            var decoded = l.search.slice(1).split('&').map(function(s) {
+              return s.replace(/~and~/g, '&')
+            }).join('?');
+            window.history.replaceState(null, null,
+                l.pathname.slice(0, -1) + decoded + l.hash
+            );
+          }
+        }(window.location));
+      </script>
+            
       
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +23,8 @@
       <meta name="description" content="Join us for our wedding celebration!" />
       <meta name="robots" content="noindex, nofollow" />
       <style>html, body { min-height: 100%; margin: 0; } #root { min-height: 100%; }</style>
-      
+
+     
     </head>
 
     <body>

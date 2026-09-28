@@ -8,8 +8,8 @@ const searchParams = new URLSearchParams(window.location.search);
 
 // Synchronously read the active key directly from local storage
 export function getActiveLanguage(): 'en' | 'zh' {
-  const qsLangauge = searchParams.get("lang");
-  const stored = qsLangauge?.toLowerCase() || localStorage.getItem('language')?.toLocaleLowerCase();
+  const qsLangauge = searchParams.get("lang")?.trim().toLocaleLowerCase();
+  const stored = qsLangauge?.toLowerCase() || localStorage.getItem('language')?.trim().toLocaleLowerCase();
   return stored === 'zh' ? 'zh' : 'en';
 }
 

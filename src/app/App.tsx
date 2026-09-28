@@ -2,23 +2,20 @@ import { useState, useEffect } from "react";
 import { RouterProvider } from "react-router";
 import { router } from "./routes";
 
-// 1. Import your brand colors from your constants file
-// (Adjust the relative path '../config/constants' to match where your file lives)
+// 1. Theme Configuration
 import { GOLD, WHITE, DARK_GREY } from "./Constants"; 
 
 // 2. Asset Imports
 import inkImage from '../imports/inkImage.jpg';
 import envelopeTexture from '../imports/EnvelopeTexture.jpg';
-import abhayaLibre from './fonts/AbhayaLibre-Regular.ttf';
-import cinzel from './fonts/Cinzel-VariableFont_wght.ttf';
-import fanzheng from './fonts/FanzhengKaitiFont-SimplifiedChinese.ttf';
-import notoSerif from './fonts/NotoSerifSC-VariableFont_wght.ttf';
-import windSong from './fonts/WindSong-Regular.ttf';
+import abhayaLibre from '../app/fonts/AbhayaLibre-Regular.ttf';
+import cinzel from '../app/fonts/Cinzel-VariableFont_wght.ttf';
+import fanzheng from '../app/fonts/FanzhengKaitiFont-SimplifiedChinese.ttf';
+import notoSerif from '../app/fonts/NotoSerifSC-VariableFont_wght.ttf';
+import windSong from '../app/fonts/WindSong-Regular.ttf';
 
 const IMAGES_TO_PRELOAD = [inkImage, envelopeTexture];
 
-// NOTE: Make sure these 'name' strings match the font-family names exactly 
-// as they are defined in your @font-face / Global CSS configuration.
 const FONTS_TO_PRELOAD = [
   { name: 'AbhayaLibre', src: abhayaLibre },
   { name: 'CINZEL', src: cinzel },
@@ -33,6 +30,24 @@ export default function App() {
   useEffect(() => {
     const loadAssets = async () => {
       try {
+        // ==========================================
+        // 1. ANTI-FLICKER PREFLIGHT ROUTE CHECK
+        // ==========================================
+        const searchParams = new URLSearchParams(window.location.search);
+        const hasStoredLanguage = localStorage.getItem("language") || searchParams.get('lang');
+        
+        const currentPath = window.location.pathname;
+        const isInvitationPage = currentPath === "/invitation"; // Adjust if your route differs
+        const isOnLanguagePage = currentPath.endsWith("/language");
+
+        // Swap the route under the hood before React draws anything
+        if (!hasStoredLanguage && !isInvitationPage && !isOnLanguagePage) {
+          window.history.replaceState(null, "", "/language");
+        }
+
+        // ==========================================
+        // 2. ASSET PRELOADING PROMISES
+        // ==========================================
         const imagePromises = IMAGES_TO_PRELOAD.map((src) => {
           return new Promise<void>((resolve) => {
             const img = new Image();
@@ -56,6 +71,7 @@ export default function App() {
       } catch (err) {
         console.error("Asset preloading encountered an error", err);
       } finally {
+        // Triggers the state update to remove the loader screen
         setIsReady(true);
       }
     };
@@ -63,7 +79,7 @@ export default function App() {
     loadAssets();
   }, []);
 
-  // 3. Branded loading UI
+  // 3. Branded loading UI (This hides the RouterProvider until isReady is true)
   if (!isReady) {
     return (
       <div style={styles.spinnerContainer}>
@@ -73,9 +89,9 @@ export default function App() {
     );
   }
 
+  // 4. Executed only AFTER assets load and the URL has been silently updated
   return <RouterProvider router={router} />;
 }
-
 // 4. Styles map consuming your exported theme values
 const styles = {
   spinnerContainer: {

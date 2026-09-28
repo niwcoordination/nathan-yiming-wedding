@@ -55,14 +55,14 @@ function MemberCard({
     >
       {/* Name — always full width on its own row */}
       <div className="flex items-center justify-between mb-3">
-        <p style={{ fontFamily: C.FONT_BLOCK, color: C.DEEP_BLUE, fontSize: "0.9rem", fontWeight: 500 }}>
+        <p style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE, fontSize: "0.9rem", fontWeight: 500 }}>
           {member.firstName} {member.lastName}
         </p>
         {readOnly && (
           <span
             className="text-xs px-3 py-1 ml-3 flex-shrink-0"
             style={{
-              fontFamily: C.FONT_BLOCK,
+              fontFamily: C.FONT_BLOCK(),
               borderRadius: "2px",
               background: isAttending ? C.GOLD_LIGHT_BACKGROUND : C.GREY_BACKGROUND,
               color: isAttending ? C.DARK_GOLD : C.GREY,
@@ -81,7 +81,7 @@ function MemberCard({
             onClick={() => onChange({ ...response, rsvp: true })}
             className="flex items-center justify-center gap-1.5 py-2.5 text-xs tracking-[0.12em] uppercase transition-all duration-200"
             style={{
-              fontFamily: C.FONT_BLOCK,
+              fontFamily: C.FONT_BLOCK(),
               borderRadius: "2px",
               border: isAttending ? "none" : `1px solid ${C.GREY}`,
               background: isAttending ? `linear-gradient(135deg, ${C.GOLD}, ${C.LIGHT_GOLD})` : C.MINMAL_TRANSPARENT_WHITE,
@@ -96,7 +96,7 @@ function MemberCard({
             onClick={() => onChange({ ...response, rsvp: false, dietary: "" })}
             className="flex items-center justify-center gap-1.5 py-2.5 text-xs tracking-[0.12em] uppercase transition-all duration-200"
             style={{
-              fontFamily: C.FONT_BLOCK,
+              fontFamily: C.FONT_BLOCK(),
               borderRadius: "2px",
               border: isDeclining ? "none" : `1px solid ${C.GREY}`,
               background: isDeclining ? C.GREY : C.MINMAL_TRANSPARENT_WHITE,
@@ -115,7 +115,7 @@ function MemberCard({
         <div className="mt-4">
           <label
             className="block text-xs tracking-[0.15em] uppercase mb-1.5"
-            style={{ fontFamily: C.FONT_BLOCK, color: C.LIGHT_GREY}}
+            style={{ fontFamily: C.FONT_BLOCK(), color: C.LIGHT_GREY}}
           >
             {selectedLanguage.RSVP.FORM.DIETARY_LABEL}
           </label>
@@ -131,7 +131,7 @@ function MemberCard({
               onChange={(e) => onChange({ ...response, dietary: e.target.value })}
               className="w-full text-sm resize-none outline-none px-3 py-2.5 transition-all duration-200"
               style={{
-                fontFamily: C.FONT_STANDARD,
+                fontFamily: C.FONT_STANDARD(),
                 color: C.GREY,
                 border: `1px solid ${C.GOLD_BORDERS}`,
                 borderRadius: "2px",
@@ -164,7 +164,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-xs tracking-[0.15em] uppercase mb-1.5" style={{ fontFamily: C.FONT_BLOCK, color: C.LIGHT_GREY }}>
+      <label className="block text-xs tracking-[0.15em] uppercase mb-1.5" style={{ fontFamily: C.FONT_BLOCK(), color: C.LIGHT_GREY, fontSize: "0.9rem" }}>
         {label}
       </label>
       <input
@@ -175,11 +175,12 @@ function Field({
         placeholder={placeholder || label}
         className="w-full px-4 py-3 text-sm outline-none transition-all"
         style={{
-          fontFamily: C.FONT_STANDARD,
+          fontFamily: C.FONT_STANDARD(),
           border: `1px solid ${C.GOLD_BORDERS}`,
           borderRadius: "2px",
           background: C.MINMAL_TRANSPARENT_WHITE,
           color: C.DARK_GREY,
+          fontSize: "0.8rem",
         }}
         onFocus={(e) => (e.target.style.borderColor = `${C.GOLD_BORDERS}`)}
         onBlur={(e) => (e.target.style.borderColor = `${C.GOLD_LIGHT_BACKGROUND}`)}
@@ -319,7 +320,7 @@ export default function RSVP() {
   // ── Render ──────────────────────────────────────────────────────────────
   
   return (
-    <div className="relative min-h-screen" style={{ fontFamily: C.FONT_STANDARD }}>
+    <div className="relative min-h-screen" style={{ fontFamily: C.FONT_STANDARD() }}>
 
       {/* Fixed background — same as main site */}
       <BackgroundImage />
@@ -336,7 +337,7 @@ export default function RSVP() {
             {loading && step === "search" && (
               <div className="text-center py-32">
                 <div className="inline-block w-8 h-8 border-2 rounded-full animate-spin" style={{ borderColor: C.GOLD_LIGHT_BACKGROUND, borderTopColor: C.GOLD }} />
-                <p className="mt-5 text-xs tracking-widest uppercase" style={{ color: C.GREY, fontFamily: C.FONT_BLOCK }}>{selectedLanguage.RSVP.SYSTEM.LOADING}</p>
+                <p className="mt-5 text-xs tracking-widest uppercase" style={{ color: C.GREY, fontFamily: C.FONT_BLOCK() }}>{selectedLanguage.RSVP.SYSTEM.LOADING}</p>
               </div>
             )}
 
@@ -345,14 +346,14 @@ export default function RSVP() {
               <div>
                 {/* Header */}
                 <div className="text-center mb-10">
-                  <p className="text-xs tracking-[0.38em] uppercase mb-3" style={{ fontFamily: C.FONT_BLOCK, color: C.PURPLE }}>
+                  <p className="text-xs uppercase mb-3" style={{ fontFamily: C.FONT_BLOCK(), fontSize: "clamp(0.9rem, 1.2rem, 1.5rem)", color: C.PURPLE }}>
                     {selectedLanguage.RSVP.SEARCH.HERO_MESSAGE}
                   </p>
-                  <h1 style={{ fontFamily: C.FONT_CURSIVE, fontSize: "clamp(3rem, 9vw, 4.5rem)", color: C.DEEP_BLUE, lineHeight: 1 }}>
-                    RSVP
+                  <h1 style={{ fontFamily: C.FONT_CURSIVE(), fontSize: "clamp(3rem, 9vw, 4.5rem)", color: C.DEEP_BLUE, lineHeight: 1 }}>
+                    {selectedLanguage.NAV.RSVP}
                   </h1>
                   <GoldDivider />
-                  <p className="text-sm leading-loose" style={{ color: C.GREY }}>
+                  <p className="text-sm leading-loose" style={{ fontFamily: C.FONT_STANDARD(),  fontSize: "clamp(1rem, 1.25rem, 1.5rem)", color: C.GREY, lineHeight: 1.5 }}>
                     {selectedLanguage.RSVP.SEARCH.INTRO}
                   </p>
                 </div>
@@ -366,7 +367,7 @@ export default function RSVP() {
                   </div>
                   {/* Error message */}
                   {searchError && (
-                    <div className="mb-4 px-4 py-3 text-sm leading-relaxed font-medium" style={{ color: C.ERROR_RED, background: C.WHITE, border: "2px solid", borderColor: C.ERROR_RED, borderRadius: "2px", fontFamily: C.FONT_STANDARD }}>
+                    <div className="mb-4 px-4 py-3 text-sm leading-relaxed font-medium" style={{ color: C.ERROR_RED, background: C.WHITE, border: "2px solid", borderColor: C.ERROR_RED, borderRadius: "2px", fontFamily: C.FONT_STANDARD() }}>
                       {searchError}
                     </div>
                   )}
@@ -377,7 +378,7 @@ export default function RSVP() {
                     disabled={loading}
                     className="w-full py-3.5 text-xs tracking-[0.25em] uppercase flex items-center justify-center gap-2 transition-all duration-200 hover:opacity-85 active:scale-[0.98] disabled:opacity-50"
                     style={{
-                      fontFamily: C.FONT_BLOCK,
+                      fontFamily: C.FONT_BLOCK(),
                       background: `linear-gradient(135deg, ${C.GOLD}, ${C.LIGHT_GOLD})`,
                       color: C.WHITE,
                       borderRadius: "2px",
@@ -388,7 +389,7 @@ export default function RSVP() {
                   </button>
                 </div>
 
-                <p className="text-center text-xs mt-6 leading-loose" style={{ color: C.GREY }}>
+                <p className="text-center text-xs leading-loose" style={{ color: C.GREY, fontFamily: C.FONT_BLOCK(), fontSize: "0.9rem" }}>
                   {selectedLanguage.RSVP.SEARCH.CANT_FIND}{" "}
                   <a href={`mailto:${C.CONTACT_EMAIL}`} className="underline transition-opacity hover:opacity-60" style={{ color: C.DARK_GOLD }}>
                     {selectedLanguage.RSVP.SEARCH.CONTACT_LINK}
@@ -398,7 +399,7 @@ export default function RSVP() {
                 <GoldDividerThin />
                
 
-                <p className="text-center text-xs" style={{ color: C.LIGHT_GREY, fontFamily: C.FONT_BLOCK, letterSpacing: "0.12em" }}>
+                <p className="text-center text-xs" style={{ color: C.LIGHT_GREY, fontFamily: C.FONT_BLOCK(), fontSize: "0.9rem", letterSpacing: "0.12em" }}>
                   {selectedLanguage.RSVP.SEARCH.DEADLINE_LABEL} · {selectedLanguage.DATES.CUTOFF_RSVP_DATE} 
                 </p>
               </div>
@@ -409,10 +410,10 @@ export default function RSVP() {
               <div>
                 {/* Header */}
                 <div className="text-center mb-8">
-                  <p className="text-xs tracking-[0.35em] uppercase mb-3" style={{ fontFamily: C.FONT_BLOCK, color: C.PURPLE }}>
+                  <p className="text-xs tracking-[0.35em] uppercase mb-3" style={{ fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>
                     {memberCount === 1 ? "Your invitation" : `Household · ${memberCount} guests`}
                   </p>
-                  <h1 style={{ fontFamily: C.FONT_CURSIVE, fontSize: "clamp(2.5rem, 8vw, 3.8rem)", color: C.DEEP_BLUE, lineHeight: 1.1 }}>
+                  <h1 style={{ fontFamily: C.FONT_CURSIVE(), fontSize: "clamp(2.5rem, 8vw, 3.8rem)", color: C.DEEP_BLUE, lineHeight: 1.1 }}>
                     {household.householdName}
                   </h1>
                   <div className="flex items-center gap-3 justify-center mt-4 mb-4">
@@ -427,7 +428,7 @@ export default function RSVP() {
 
                 {/* Past-cutoff banner */}
                 {isPastCutoff && (
-                  <div className="mb-6 px-4 py-4 text-xs leading-relaxed text-center" style={{ color: C.DARK_GOLD, background: `${C.GOLD_LIGHT_BACKGROUND}`, border: `1px solid ${C.GOLD_BORDERS}`, borderRadius: "2px", fontFamily: C.FONT_BLOCK, letterSpacing: "0.07em" }}>
+                  <div className="mb-6 px-4 py-4 text-xs leading-relaxed text-center" style={{ color: C.DARK_GOLD, background: `${C.GOLD_LIGHT_BACKGROUND}`, border: `1px solid ${C.GOLD_BORDERS}`, borderRadius: "2px", fontFamily: C.FONT_BLOCK(), letterSpacing: "0.07em" }}>
                     {selectedLanguage.RSVP.FORM.PAST_CUTOFF_FORM(selectedLanguage.DATES.CUTOFF_RSVP_DATE)}
                     <a href={`mailto:${C.CONTACT_EMAIL}`} className="underline hover:opacity-70" style={{ color: C.DARK_GOLD }}>{selectedLanguage.RSVP.FORM.PAST_CUTOFF_LINK}</a>.
                   </div>
@@ -436,10 +437,10 @@ export default function RSVP() {
                 {/* Bulk actions — only for multi-person households, before cutoff */}
                 {memberCount > 1 && !isPastCutoff && (
                   <div className="grid grid-cols-2 gap-2 mb-5">
-                    <button onClick={() => handleBulkSet(true)} className="flex items-center justify-center gap-1.5 py-2.5 text-xs tracking-[0.12em] uppercase transition-all hover:opacity-85" style={{ fontFamily: C.FONT_BLOCK, background: `linear-gradient(135deg, ${C.GOLD}, ${C.LIGHT_GOLD})`, color: C.WHITE, borderRadius: "2px", fontWeight: 600 }}>
+                    <button onClick={() => handleBulkSet(true)} className="flex items-center justify-center gap-1.5 py-2.5 text-xs tracking-[0.12em] uppercase transition-all hover:opacity-85" style={{ fontFamily: C.FONT_BLOCK(), background: `linear-gradient(135deg, ${C.GOLD}, ${C.LIGHT_GOLD})`, color: C.WHITE, borderRadius: "2px", fontWeight: 600 }}>
                       <Check size={11} strokeWidth={2.5} />{selectedLanguage.RSVP.FORM.BTN_ACCEPT_ALL}
                     </button>
-                    <button onClick={() => handleBulkSet(false)} className="flex items-center justify-center gap-1.5 py-2.5 text-xs tracking-[0.12em] uppercase transition-all hover:opacity-85" style={{ fontFamily: C.FONT_BLOCK, background: C.GREY, color: C.WHITE, borderRadius: "2px", fontWeight: 600 }}>
+                    <button onClick={() => handleBulkSet(false)} className="flex items-center justify-center gap-1.5 py-2.5 text-xs tracking-[0.12em] uppercase transition-all hover:opacity-85" style={{ fontFamily: C.FONT_BLOCK(), background: C.GREY, color: C.WHITE, borderRadius: "2px", fontWeight: 600 }}>
                       <X size={11} strokeWidth={2.5} />{selectedLanguage.RSVP.FORM.BTN_DECLINE_ALL}
                     </button>
                   </div>
@@ -460,7 +461,7 @@ export default function RSVP() {
 
                 {/* Validation error */}
                 {submitError && (
-                  <div className="mt-4 px-4 py-3 text-sm leading-relaxed font-medium" style={{ color: C.ERROR_RED, background: C.WHITE, border: "2px solid", borderColor: C.ERROR_RED, borderRadius: "2px", fontFamily: C.FONT_STANDARD }}>
+                  <div className="mt-4 px-4 py-3 text-sm leading-relaxed font-medium" style={{ color: C.ERROR_RED, background: C.WHITE, border: "2px solid", borderColor: C.ERROR_RED, borderRadius: "2px", fontFamily: C.FONT_STANDARD() }}>
                     {submitError}
                   </div>
                 )}
@@ -472,7 +473,7 @@ export default function RSVP() {
                     disabled={loading}
                     className="w-full mt-6 py-4 text-xs tracking-[0.25em] uppercase flex items-center justify-center gap-2 transition-all duration-200 hover:opacity-85 active:scale-[0.98] disabled:opacity-50"
                     style={{
-                      fontFamily: C.FONT_BLOCK,
+                      fontFamily: C.FONT_BLOCK(),
                       background: `linear-gradient(135deg, ${C.GOLD}, ${C.LIGHT_GOLD})`,
                       color: C.WHITE,
                       borderRadius: "2px",
@@ -484,7 +485,7 @@ export default function RSVP() {
                 )}
 
                 {/* Wrong household? */}
-                <button onClick={handleNotMe} className="w-full mt-3 py-2.5 text-xs tracking-[0.15em] uppercase flex items-center justify-center gap-1.5 transition-all hover:opacity-60" style={{ fontFamily: C.FONT_BLOCK, color: C.LIGHT_GREY }}>
+                <button onClick={handleNotMe} className="w-full mt-3 py-2.5 text-xs tracking-[0.15em] uppercase flex items-center justify-center gap-1.5 transition-all hover:opacity-60" style={{ fontFamily: C.FONT_BLOCK(), color: C.DARK_GREY }}>
                   <RotateCcw size={11} strokeWidth={1.5} />
                   {selectedLanguage.RSVP.FORM.NOT_ME}
                 </button>
@@ -503,14 +504,14 @@ export default function RSVP() {
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6" style={{ background: `linear-gradient(135deg, ${C.GOLD}, ${C.LIGHT_GOLD})`, boxShadow: `0 2px 10px ${C.LIGHT_GOLD}`}}>
                     <Check size={28} style={{ color: C.WHITE }} strokeWidth={2.5} />
                   </div>
-                  <p className="text-xs tracking-[0.38em] uppercase mb-3" style={{ fontFamily: C.FONT_BLOCK, color: C.PURPLE }}>
+                  <p className="text-xs tracking-[0.38em] uppercase mb-3" style={{ fontFamily: C.FONT_BLOCK(), color: C.PURPLE, fontSize: "clamp(0.9rem, 1.2rem, 1.5rem)" }}>
                     {selectedLanguage.RSVP.CONFIRMATION.HERO_MESSAGE}
                   </p>
-                  <h1 style={{ fontFamily: C.FONT_CURSIVE, fontSize: "clamp(2.8rem, 9vw, 4rem)", color: C.DEEP_BLUE, lineHeight: 1 }}>
+                  <h1 style={{ fontFamily: C.FONT_CURSIVE(), fontSize: "clamp(2.8rem, 9vw, 4rem)", color: C.DEEP_BLUE, lineHeight: 1 }}>
                     {selectedLanguage.RSVP.CONFIRMATION.CONFIRMED_HEADING}
                   </h1>
                   <GoldDivider />
-                  <p className="text-sm leading-loose" style={{ color: C.GREY }}>
+                  <p className="text-sm leading-loose" style={{ color: C.GREY, fontFamily: C.FONT_STANDARD(), fontSize: "clamp(1rem, 1.25rem, 1.5rem)", lineHeight: 1.5 }}>
                     {attendingCount > 0
                       ? selectedLanguage.RSVP.CONFIRMATION.MSG_ATTENDING(attendingCount)
                       : selectedLanguage.RSVP.CONFIRMATION.MSG_DECLINED}
@@ -532,7 +533,7 @@ export default function RSVP() {
 
                 {/* Edit / past-cutoff */}
                 {isPastCutoff ? (
-                  <div className="px-4 py-4 text-xs leading-relaxed text-center" style={{ color: C.DARK_GOLD, background: `${C.GOLD_LIGHT_BACKGROUND}`, border: `1px solid ${C.GOLD_BORDERS}`, borderRadius: "2px", fontFamily: C.FONT_BLOCK, letterSpacing: "0.07em" }}>
+                  <div className="px-4 py-4 text-xs leading-relaxed text-center" style={{ color: C.DARK_GOLD, background: `${C.GOLD_LIGHT_BACKGROUND}`, border: `1px solid ${C.GOLD_BORDERS}`, borderRadius: "2px", fontFamily: C.FONT_BLOCK(), letterSpacing: "0.07em" }}>
                     {selectedLanguage.RSVP.FORM.PAST_CUTOFF_FORM(selectedLanguage.DATES.CUTOFF_RSVP_DATE)}
                     <a href={`mailto:${C.CONTACT_EMAIL}`} className="underline hover:opacity-70" style={{ color: C.DARK_GOLD }}>{selectedLanguage.RSVP.FORM.PAST_CUTOFF_LINK}</a>.
                   </div>
@@ -541,7 +542,7 @@ export default function RSVP() {
                     onClick={() => setIsEditing(true)}
                     className="w-full py-3.5 text-xs tracking-[0.2em] uppercase flex items-center justify-center gap-2 transition-all hover:opacity-85"
                      style={{
-                      fontFamily: C.FONT_BLOCK,
+                      fontFamily: C.FONT_BLOCK(),
                       background: `linear-gradient(135deg, ${C.GOLD}, ${C.LIGHT_GOLD})`,
                       color: C.WHITE,
                       borderRadius: "2px",
@@ -554,12 +555,12 @@ export default function RSVP() {
                 )}
 
                 {!isPastCutoff && (
-                  <p className="text-center text-xs mt-4" style={{ color: C.GREY }}>
+                  <p className="text-center text-xs mt-4" style={{ color: C.GREY, fontFamily: C.FONT_STANDARD(), fontSize: "1rem" }}>
                     {selectedLanguage.RSVP.CONFIRMATION.CHANGES_UNTIL} <span style={{ color: C.DARK_GOLD }}>{selectedLanguage.DATES.CUTOFF_RSVP_DATE}</span>
                   </p>
                 )}
 
-                <button onClick={handleNotMe} className="w-full mt-4 py-2.5 text-xs tracking-[0.15em] uppercase flex items-center justify-center gap-1.5 transition-all hover:opacity-60" style={{ fontFamily: C.FONT_BLOCK, color: "#777" }}>
+                <button onClick={handleNotMe} className="w-full mt-4 py-2.5 text-xs tracking-[0.15em] uppercase flex items-center justify-center gap-1.5 transition-all hover:opacity-60" style={{ fontFamily: C.FONT_BLOCK(), fontSize: "0.9rem", color: C.DARK_GREY }}>
                   <RotateCcw size={11} strokeWidth={1.5} />
                   {selectedLanguage.RSVP.CONFIRMATION.NOT_MY_RSVP}
                 </button>

@@ -1,11 +1,11 @@
-import { createHashRouter } from "react-router"; 
+import { createBrowserRouter } from "react-router-dom";
 import Main from "./Pages/Main";
 import Language from "./Pages/Language";
 import RSVP from "./Pages/RSVP";
 import Invitation from "./Pages/Invitation";
 import Root from "./Root";
 
-export const router = createHashRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
