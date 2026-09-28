@@ -10,4 +10,4 @@
   - git push origin main
 
   Run local
-  - npx serve -s dist
+  - npx vite --open
