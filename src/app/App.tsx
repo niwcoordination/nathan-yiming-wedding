@@ -10,10 +10,8 @@ import { GOLD, WHITE, DARK_GREY } from "./Constants";
 import inkImage from '../imports/inkImage.jpg';
 import envelopeTexture from '../imports/EnvelopeTexture.jpg';
 import abhayaLibre from './fonts/AbhayaLibre-Regular.ttf';
-import beauRivage from './fonts/BeauRivage-Regular.ttf';
 import cinzel from './fonts/Cinzel-VariableFont_wght.ttf';
 import fanzheng from './fonts/FanzhengKaitiFont-SimplifiedChinese.ttf';
-import lovelight from './fonts/Lovelight-Regular.ttf';
 import notoSerif from './fonts/NotoSerifSC-VariableFont_wght.ttf';
 import windSong from './fonts/WindSong-Regular.ttf';
 
@@ -25,7 +23,6 @@ const FONTS_TO_PRELOAD = [
   { name: 'AbhayaLibre', src: abhayaLibre },
   { name: 'CINZEL', src: cinzel },
   { name: 'KaiTi', src: fanzheng },
-  { name: 'Lovelight', src: lovelight },
   { name: 'NotoSerifSC', src: notoSerif },
   { name: 'WindSong', src: windSong },
 ];
