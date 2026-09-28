@@ -1,11 +1,11 @@
-import { createBrowserRouter } from "react-router";
+import { createHashRouter } from "react-router"; 
 import Main from "./Pages/Main";
 import Language from "./Pages/Language";
 import RSVP from "./Pages/RSVP";
 import Invitation from "./Pages/Invitation";
 import Root from "./Root";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/",
     Component: Root,
@@ -16,6 +16,4 @@ export const router = createBrowserRouter([
       { path: "invitation", Component: Invitation },
     ],
   },
-], {
-  basename: "/nathan-yiming-wedding"
-});
+]);

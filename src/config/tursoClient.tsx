@@ -1,0 +1,12 @@
+import { createClient } from '@libsql/client';
+import type { Client } from '@libsql/client';
+
+const tursoUrl: string = 'libsql://weddingguestdetails-nirweddingcoordination.aws-ap-northeast-1.turso.io';
+const tursoToken: string = 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3OTA1Nzk3MzgsImlkIjoiMDFhMGU2YjQtNTkwMS03OTA4LWIxMjMtODg3Mjg1MDRlYzRmIiwia2lkIjoidjM1bVlFeEx2Rlo3V0ZSMGFMZ3RWTG5Mbmt0RFRHQ0VPOWxzNHl3Wm9EYyIsInJpZCI6IjdjMTgwNTc0LWJkYjUtNGVkMS1hODZhLTAyZWQyNjYyNzgzMiJ9.SGouhhwQyN00Ol8e2G6v5bd1uWT_jpZ3VlTzgy6QviQnUTP139wr39rVpGrEFkSQtgC2bsq-Wh6urWcOseInDg';
+
+const turso: Client = createClient({
+  url: tursoUrl,
+  authToken: tursoToken,
+});
+
+export default turso;

@@ -283,7 +283,7 @@ export default function RSVP() {
     setLoading(true);
     setSubmitError("");
     try {
-      await submitRsvp(responses, household.guestId, household.householdId);
+      await submitRsvp(responses);
       
       setStep("submitted");
       setIsEditing(false);
