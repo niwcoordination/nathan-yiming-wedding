@@ -9,7 +9,28 @@
       <meta name="description" content="Join us for our wedding celebration!" />
       <meta name="robots" content="noindex, nofollow" />
       <style>html, body { min-height: 100%; margin: 0; } #root { min-height: 100%; }</style>
-      
+
+      <script type="text/javascript">
+        (function(l) {
+          // 1. Check if the URL contains our special SPA routing query parameter
+          var params = new URLSearchParams(l.search);
+          var spaRoute = params.get('/'); // Looks for the key after '?' which is '/language'
+
+          if (spaRoute) {
+            // 2. Reconstruct the clean path (e.g., /language)
+            var cleanPath = '/' + spaRoute;
+            
+            // 3. Clean up any remaining search queries or hashes if they exist
+            params.delete('/');
+            var remainingSearch = params.toString();
+            var searchString = remainingSearch ? '?' + remainingSearch : '';
+
+            // 4. Instantly replace browser history before React Router loads
+            window.history.replaceState(null, null, cleanPath + searchString + l.hash);
+          }
+        }(window.location));
+      </script>
+            
       <script type="module" crossorigin src="/assets/index-CpbLTfrP.js"></script>
       <link rel="stylesheet" crossorigin href="/assets/index-UNi17CWM.css">
     </head>
