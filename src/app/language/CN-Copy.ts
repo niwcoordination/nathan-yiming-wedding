@@ -53,6 +53,7 @@ export const zh: Translation = {
       DEADLINE_LABEL: "回复截止日期",
     },
     FORM: {
+      YOUR_INVITATION: "Your invitation",
       INTRO: "请在下方确认每位宾客的的出席情况和饮食要求。",
       BTN_ACCEPT_ALL: "全部接受",
       BTN_DECLINE_ALL: "全部谢绝",

@@ -29,6 +29,7 @@ export interface GuestLookupCriteria {
 
 export interface ButtonProps {
   id: string;
+  loading?: boolean;
   onClickFunction: () => void;
   button_text?: Array<any>;
   paddingHorizontal: string;

@@ -31,6 +31,7 @@ export interface Translation {
       DEADLINE_LABEL: string;
     };
     FORM: {
+      YOUR_INVITATION: string;
       INTRO: string;
       BTN_ACCEPT_ALL: string;
       BTN_DECLINE_ALL: string;

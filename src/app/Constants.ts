@@ -39,7 +39,7 @@ export const MINIMAL_TRANSPARENT_GREY = "#0000000d"
 
 
 export const GOLD_BORDERS = GOLD + "55";
-export const GOLD_LIGHT_BACKGROUND = GOLD + "30";
+export const GOLD_LIGHT_BACKGROUND = GOLD + "70";
 export const GREY_BORDERS = GREY + "30";
 export const GREY_BACKGROUND = GREY + "20";
 
