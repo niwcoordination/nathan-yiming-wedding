@@ -13,14 +13,16 @@ export const zh: Translation = {
     { label: "常见问题", id: "faq" },
   ],
   SCHEDULE: [
-    { time: "下午 2:00", event: "宾客入场 · 欢迎饮品", detail: "请与我们一同在露台享用香槟与小食，共度欢聚时刻。" },
-    { time: "下午 3:00", event: "婚礼仪式", detail: "仪式将准时开始——请于下午 2:50 就座。" },
-    { time: "下午 3:30", event: "鸡尾酒时光", detail: "在我们拍摄留影之际，请享用鸡尾酒、小食与草坪游戏。" },
-    { time: "下午 5:30", event: "晚宴大厅开放", detail: "晚宴厅正式开放，迎接夜晚的庆典。" },
-    { time: "下午 6:00", event: "晚宴 · 致辞", detail: "三道式晚宴，亲友致辞，满溢真情。" },
-    { time: "下午 7:30", event: "首支舞 · 切蛋糕", detail: "新人共舞，甜蜜切蛋糕，见证美好瞬间。" },
-    { time: "下午 8:00", event: "舞池开放 · 庆典继续", detail: "舞池正式开放，与我们共舞欢庆！" },
-    { time: "晚上 11:00", event: "送宾 · 大巴出发", detail: "包车将从庄园出发返回墨尔本市区，带着满满祝福，一路平安。" },
+
+ { time: "3:00 PM", event: "宾客入席", detail: "欢迎抵达婚礼现场，请在仪式开始前依序入座。" },
+  { time: "3:30 PM", event: "婚礼仪式", detail: "执子之手，与子偕老。请与我们共同见证这神圣而幸福的誓言时刻。" },
+  { time: "4:00 PM", event: "鸡尾酒时光", detail: "请前往露台享用招牌鸡尾酒与精致小食，我们在拍照期间也请尽情畅谈。" },
+  { time: "5:00 PM", event: "晚宴入席", detail: "请在主宴会厅依序就座，让我们一同欢迎新郎新娘入场并享用美味晚宴。" },
+  { time: "6:15 PM", event: "致辞与祝酒", detail: "举杯同庆！听听我们最亲密的朋友与家人分享他们的温馨祝福与趣事。" },
+  { time: "7:00 PM", event: "切蛋糕与第一支舞", detail: "见证我们甜蜜的切蛋糕仪式，并用我们的第一支舞正式拉开派对的序幕。" },
+  { time: "7:30 PM", event: "舞池开放", detail: "派对时间到！尽情放松，拿起酒杯，和我们一起在舞池中尽情摇摆吧！" },
+  { time: "10:00 PM", event: "圆满送别", detail: "感谢大家的陪伴，请加入我们最后的告别仪式，为这完美的一夜画上句点。" }
+
   ],
   FAQS: [
     { question: "婚礼的着装要求是什么？", answer: "正式礼服。欢迎宾客融入浪漫主题——淡蓝色、粉色、薰衣草色或经典正装均受欢迎。请避免穿着白色或象牙色，以示对新娘的尊重。" },
@@ -38,6 +40,42 @@ export const zh: Translation = {
     SWITCH_LANGUAGE: "Switch Language",
     SWITCH_LANGUAGE_SHORT: "EN",
     RSVP: "期待回复"
+  },
+  MAIN: {
+    HEADERS: {
+      THE_DAY: "The Day",
+      GETTING_HERE: "Getting Here",
+      GIFT_REGISTRY: "Gift Registry",
+      QUESTIONS: "Questions"
+    },
+    TEXT: {
+      ORDER_OF_EVENTS: "Order of the Day",
+      VENUE_DESCRIPTION: "Immerse in the Yarra Valley is a stunning estate offering sweeping vineyard panoramas, lush gardens, and world-class facilities — a perfect backdrop for our celebration.",
+      VENUE_LOCATION: [
+        "The venue is located at ", 
+        " , approximately one hour from Melbourne CBD."
+      ],
+      ACCOMODATION_TRAVEL_HEADING: "ACCOMODATION & CHARTED BUS SERVICE",
+      ACCOMODATION_TRAVEL_DETAILS: [
+        "We are delighted to offer a complimentary chartered bus for guests travelling from Melbourne CBD — both ways, so you can celebrate freely. Please note that ",
+        "accommodation and transport are already arranged",
+        ". You will be staying at ",
+        "Hilton Melbourne Little Queen Street",
+        ". The chartered bus will pick you up and drop you off at the hotel.",
+      ],
+      ACCOMODATION_TRAVEL_DETAILS_DEPARTURE_HEADING: "Departure",
+      ACCOMODATION_TRAVEL_DETAILS_DEPARTURE_DETAILS: "Meet in the lobby at 1:45 PM for a 1:50 PM sharp departure from Hilton Melbourne Little Queen Street",
+      ACCOMODATION_TRAVEL_DETAILS_RETURN_HEADING: "Return",
+      ACCOMODATION_TRAVEL_DETAILS_RETURN_DETAILS: "10:00 PM from 雅拉谷 Immerse 庄园 back to Hilton Melbourne Little Queen Street",
+      GIFTS_REGISTRY: "Gifts & Registry",
+      GIFTS_REGISTRY_DECLINED: '\"We celebrate only for your company. Please know that we will not expect any gifts, red pockets, etc. Your laughter, company, and shared joy are all we need to make this day perfect.\"',
+      FREQUENTLY_ASKED_QUESTIONS: "Frequently Asked Questions",
+      FREQUENTLY_ASKED_QUESTIONS_DETAILS: "Everything you need to know about the day.",
+      STILL_HAVE_QUESTIONS: "Still have a question? We would love to hear from you.",
+      GET_IN_TOUCH: "Get in touch",
+        
+
+    }
   },
   RSVP: {
     SEARCH: {

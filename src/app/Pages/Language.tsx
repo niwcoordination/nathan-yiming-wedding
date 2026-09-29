@@ -44,21 +44,15 @@ export default function Language() {
         </p>
 
         {/* Removed text-6rem inline rule, replaced with clean responsive sizing classes */}
-        <h1 
-          className="leading-none mb-5 text-center text-5xl sm:text-7xl md:text-8xl" 
-          style={{ 
-            fontFamily: C.NAME_FONT(), 
-            color: C.DEEP_BLUE,
-            fontSize: 'clamp(5rem, 5.5rem , 6rem)'
-          }}
-        >
-          {LC.NAMES}
+        <h1 className="-ml-[1.5rem] md:-ml-[4rem] md:ml-0 leading-none mb-5 flex flex-col items-center" style={{ fontFamily: C.NAME_FONT(), fontSize: "clamp(5rem, 12vw, 8rem)", color: C.DEEP_BLUE }}>
+          {LC.NAMES.split(' ').map((part, index) => (
+            <span key={index}>{part}</span>
+          ))}
         </h1>
-
         <GoldDivider />
 
           <p className="text-xs tracking-[0.25em] mb-2 text-center" style={{ fontSize: "1rem", fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>
-            {format(LC.WEDDING_DATE, 'dd MMM yyyy')} · {format(LC.WEDDING_DATE, 'PPP', { locale: zhCN })}
+            {format(LC.WEDDING_DATE, 'dd MMMM yyyy')} · {format(LC.WEDDING_DATE, 'PPP', { locale: zhCN })}
           </p>
           <div className="mb-12 text-center space-y-1">
             <p className="text-xs tracking-[0.2em] uppercase" style={{ fontSize: "1.2rem", fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>

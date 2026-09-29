@@ -17,6 +17,7 @@ export const WEBSITE_URL = "yimingandnathan.com";
 
 // Maps embed uses the address — regenerate the iframe src if it changes
 export const VENUE_MAPS_QUERY = "1548+Melba+Hwy,+Dixons+Creek+VIC+3775,+Australia";
+export const VENUE_LOCATION = "1548 Melba Hwy, Dixons Creek, VIC 3775, Australia";
 
 //Contact Details
 export const CONTACT_EMAIL = "n.i.r.coodination.com";

@@ -16,7 +16,34 @@ export interface Translation {
   LOCATION:{
     VENUE_NAME: string; // "Immerse in the Yarra Valley";
     VENUE_NAME_SHORT: string; // = "Immerse Yarra Valley";
-  }
+  };
+  MAIN: {
+    HEADERS: {
+      THE_DAY: string;
+      GETTING_HERE: string;
+      GIFT_REGISTRY: string;
+      QUESTIONS: string;
+    };
+    TEXT: {
+      ORDER_OF_EVENTS: string;
+      VENUE_DESCRIPTION: string;
+      VENUE_LOCATION: [string, string]; 
+      ACCOMODATION_TRAVEL_HEADING: string;
+      ACCOMODATION_TRAVEL_DETAILS: [string, string, string, string, string];
+      ACCOMODATION_TRAVEL_DETAILS_DEPARTURE_HEADING: string;
+      ACCOMODATION_TRAVEL_DETAILS_DEPARTURE_DETAILS: string;
+      ACCOMODATION_TRAVEL_DETAILS_RETURN_HEADING: string;
+      ACCOMODATION_TRAVEL_DETAILS_RETURN_DETAILS: string;
+      GIFTS_REGISTRY: string;
+      GIFTS_REGISTRY_DECLINED: string;
+      FREQUENTLY_ASKED_QUESTIONS: string;
+      FREQUENTLY_ASKED_QUESTIONS_DETAILS: string;
+      STILL_HAVE_QUESTIONS: string;
+      GET_IN_TOUCH: string;
+      
+
+    }
+  },
   RSVP: {
     SEARCH: {
       HERO_MESSAGE: string;

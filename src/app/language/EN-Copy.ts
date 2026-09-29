@@ -12,14 +12,19 @@ export const en: Translation = {
     { label: "FAQ", id: "faq" },
   ],
   SCHEDULE: [
-    { time: "2:00 PM", event: "Guest Arrival & Welcome Drinks", detail: "Join us for bubbles and canapes on the terrace as we come together." },
-    { time: "3:00 PM", event: "Ceremony", detail: "The ceremony begins promptly — please be seated by 2:50 PM." },
-    { time: "3:30 PM", event: "Cocktail Hour", detail: "Celebrate with cocktails, canapes, and lawn games while we capture some photos." },
-    { time: "5:30 PM", event: "Reception Doors Open", detail: "The ballroom opens for the evening festivities." },
-    { time: "6:00 PM", event: "Dinner & Speeches", detail: "A three-course dinner, heartfelt toasts, and words from loved ones." },
-    { time: "7:30 PM", event: "First Dance & Cake Cutting", detail: "Our first dance as newlyweds, followed by the cutting of the wedding cake." },
-    { time: "8:00 PM", event: "Dancing & Celebration", detail: "The dance floor opens — come celebrate with us into the evening!" },
-    { time: "11:00 PM", event: "Farewell & Bus Departure", detail: "Chartered buses depart for Melbourne CBD. We will send you off with love." },
+
+
+  { time: "3:00 PM", event: "Guest Arrival", detail: "Welcome to our wedding! Please find your seat before the ceremony begins." },
+  { time: "3:30 PM", event: "The Wedding Ceremony", detail: "Join us as we exchange vows and officially say 'I do'." },
+  { time: "4:00 PM", event: "Cocktail Hour", detail: "Head over to the terrace for signature cocktails and light bites while we take a few photos." },
+  { time: "5:00 PM", event: "Reception Commences", detail: "Find your seats in the main hall as we welcome the newlyweds and prepare for dinner." },
+  { time: "6:15 PM", event: "Toasts & Speeches", detail: "Raise a glass with us as our closest family and friends share a few words." },
+  { time: "7:00 PM", event: "Cake Cutting & First Dance", detail: "Watch us cut the cake and hit the floor for our first dance to kick off the party." },
+  { time: "7:30 PM", event: "Dance Floor Opens", detail: "Let loose, grab a drink, and dance the night away with us!" },
+  { time: "10:00 PM", event: "The Grand Send-Off", detail: "Join us for one final farewell as we wrap up the night and head off as newlyweds." }
+
+
+
   ],
   FAQS: [
     { question: "What is the dress code?", answer: "Formal attire. We welcome guests to embrace the romantic theme — soft blues, blush pinks, lavenders, or classic black tie. Please avoid wearing white or ivory out of respect for the bride." },
@@ -38,7 +43,43 @@ export const en: Translation = {
     SWITCH_LANGUAGE_SHORT: "中文",
     RSVP: "RSVP"
   },
-  
+  MAIN: {
+    HEADERS: {
+      THE_DAY: "The Day",
+      GETTING_HERE: "Getting Here",
+      GIFT_REGISTRY: "Gift Registry",
+      QUESTIONS: "Questions"
+    },
+    TEXT: {
+      ORDER_OF_EVENTS: "Order of the Day",
+      VENUE_DESCRIPTION: "Immerse in the Yarra Valley is a stunning estate offering sweeping vineyard panoramas, lush gardens, and world-class facilities — a perfect backdrop for our celebration.",
+      VENUE_LOCATION: [
+      "The venue is located at ", 
+      " , approximately one hour from Melbourne CBD."
+    ],
+      ACCOMODATION_TRAVEL_HEADING: "Accomodation Options",
+      ACCOMODATION_TRAVEL_DETAILS: [
+        "Onsite accomodation is available at the venue. Please note that ",
+        "these rooms are limited", //This will be colored in the main page
+        ", so if you would like to stay onsite, we recommend booking early. ",
+        "Please reach out to us separately if you are looking at booking at the venue", //This will be colored in the main page
+        " and we will provide you with more details. Prices and room sizes available below.",
+      ],
+      ACCOMODATION_TRAVEL_DETAILS_DEPARTURE_HEADING: "Queen Suite",
+      ACCOMODATION_TRAVEL_DETAILS_DEPARTURE_DETAILS: "$275 per night, sleeps 2 adults",
+      ACCOMODATION_TRAVEL_DETAILS_RETURN_HEADING: "King Suite",
+      ACCOMODATION_TRAVEL_DETAILS_RETURN_DETAILS: "$325 per night, sleeps 2 adults (Option for 2 single beds for extra $30)",
+      GIFTS_REGISTRY: "Gifts & Registry",
+      GIFTS_REGISTRY_DECLINED: '\"We celebrate only for your company. Please know that we will not expect any gifts, red pockets, etc. Your laughter, company, and shared joy are all we need to make this day perfect.\"',
+      FREQUENTLY_ASKED_QUESTIONS: "Frequently Asked Questions",
+      FREQUENTLY_ASKED_QUESTIONS_DETAILS: "Everything you need to know about the day.",
+      STILL_HAVE_QUESTIONS: "Still have a question? We would love to hear from you.",
+      GET_IN_TOUCH: "Get in touch",
+        
+        
+
+    }
+  },
   RSVP: {
     SEARCH: {
       HERO_MESSAGE: "You are invited",
@@ -90,7 +131,7 @@ export const en: Translation = {
     },
   },
   DATES: {
-    WEDDING_DATE: format(WEDDING_DATE, 'dd MMM yyyy'),
+    WEDDING_DATE: format(WEDDING_DATE, 'dd MMMM yyyy'),
     CUTOFF_RSVP_DATE: format(RSVP_CUTOFF_DATE, 'dd MMM yyyy'),
     CEREMONY_START_TIME: "3:30pm"
   },
