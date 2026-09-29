@@ -195,7 +195,7 @@ export default function Main() {
         </Section>
 
         {/* ── Travel ────────────────────────────────────────────────────── */}
-        <GoldDividerWithText label="Getting Here" />
+        <GoldDividerWithText label={selectedLanguage.MAIN.HEADERS.GETTING_HERE} />
         <Section id="travel" className="px-5 md:px-10 py-14">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">

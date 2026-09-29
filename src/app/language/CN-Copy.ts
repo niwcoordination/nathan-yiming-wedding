@@ -77,8 +77,8 @@ export const zh: Translation = {
     SEARCH: {
       HERO_MESSAGE: "诚挚邀请您",
       INTRO: "请输入您的姓名以查找邀请函，并确认您及家人的出席情况。",
-      FIRST_NAME: "名字",
-      LAST_NAME: "姓氏",
+      FIRST_NAME: "姓氏", //Switched due to normal way of writing names. Matches Database
+      LAST_NAME: "名字",  //Switched due to normal way of writing names. Matches Database
       BTN: "查找我的邀请函",
       NOT_FOUND: "未找到该姓名的宾客。请检查拼写是否正确 —— 如果仍有问题，请直接与我们联系。",
       MISSING_NAME: "请输入名字和姓氏。",
@@ -106,7 +106,7 @@ export const zh: Translation = {
     CONFIRMATION: {
       HERO_MESSAGE: "已确认",
       CONFIRMED_HEADING: "非常感谢!",
-      MSG_ATTENDING: (n: number) => `我们迫不及待地想在 7 月 17 日与您${n === 1 ? "" : "各位"}一同庆祝！`,
+      MSG_ATTENDING: (n: number) => `We can't wait to celebrate with ${n === 1 ? "you" : `the ${n} of you`} on the ${format(WEDDING_DATE, "do 'of' MMMM yyyy")}!`,
       MSG_DECLINED: "很抱歉您无法出席。非常感谢您告知我们。",
       BTN_EDIT: "修改我的回复",
       NOT_MY_RSVP: "不是您的回复信息？重新搜索",
