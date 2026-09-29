@@ -13,16 +13,14 @@ export const zh: Translation = {
     { label: "常见问题", id: "faq" },
   ],
   SCHEDULE: [
-
- { time: "3:00 PM", event: "宾客入席", detail: "欢迎抵达婚礼现场，请在仪式开始前依序入座。" },
-  { time: "3:30 PM", event: "婚礼仪式", detail: "执子之手，与子偕老。请与我们共同见证这神圣而幸福的誓言时刻。" },
-  { time: "4:00 PM", event: "鸡尾酒时光", detail: "请前往露台享用招牌鸡尾酒与精致小食，我们在拍照期间也请尽情畅谈。" },
-  { time: "5:00 PM", event: "晚宴入席", detail: "请在主宴会厅依序就座，让我们一同欢迎新郎新娘入场并享用美味晚宴。" },
-  { time: "6:15 PM", event: "致辞与祝酒", detail: "举杯同庆！听听我们最亲密的朋友与家人分享他们的温馨祝福与趣事。" },
-  { time: "7:00 PM", event: "切蛋糕与第一支舞", detail: "见证我们甜蜜的切蛋糕仪式，并用我们的第一支舞正式拉开派对的序幕。" },
-  { time: "7:30 PM", event: "舞池开放", detail: "派对时间到！尽情放松，拿起酒杯，和我们一起在舞池中尽情摇摆吧！" },
-  { time: "10:00 PM", event: "圆满送别", detail: "感谢大家的陪伴，请加入我们最后的告别仪式，为这完美的一夜画上句点。" }
-
+    { time: "3:00 PM", event: "宾客入席", detail: "欢迎抵达婚礼现场，请在仪式开始前依序入座。" },
+    { time: "3:30 PM", event: "婚礼仪式", detail: "执子之手，与子偕老。请与我们共同见证这神圣而幸福的誓言时刻。" },
+    { time: "4:00 PM", event: "鸡尾酒时光", detail: "请前往露台享用招牌鸡尾酒与精致小食，我们在拍照期间也请尽情畅谈。" },
+    { time: "5:00 PM", event: "晚宴入席", detail: "请在主宴会厅依序就座，让我们一同欢迎新郎新娘入场并享用美味晚宴。" },
+    { time: "6:15 PM", event: "致辞与祝酒", detail: "举杯同庆！听听我们最亲密的朋友与家人分享他们的温馨祝福与趣事。" },
+    { time: "7:00 PM", event: "切蛋糕与第一支舞", detail: "见证我们甜蜜的切蛋糕仪式，并用我们的第一支舞正式拉开派对的序幕。" },
+    { time: "7:30 PM", event: "舞池开放", detail: "派对时间到！尽情放松，拿起酒杯，和我们一起在舞池中尽情摇摆吧！" },
+    { time: "10:00 PM", event: "圆满送别", detail: "感谢大家的陪伴，请加入我们最后的告别仪式，为这完美的一夜画上句点。" }
   ],
   FAQS: [
     { question: "婚礼的着装要求是什么？", answer: "正式礼服。欢迎宾客融入浪漫主题——淡蓝色、粉色、薰衣草色或经典正装均受欢迎。请避免穿着白色或象牙色，以示对新娘的尊重。" },
@@ -37,44 +35,42 @@ export const zh: Translation = {
   ],
   NAV: {
     GO_BACK: "后退",
-    SWITCH_LANGUAGE: "Switch Language",
-    SWITCH_LANGUAGE_SHORT: "EN",
+    SWITCH_LANGUAGE: "切换语言",
+    SWITCH_LANGUAGE_SHORT: "中",
     RSVP: "期待回复"
   },
   MAIN: {
     HEADERS: {
-      THE_DAY: "The Day",
-      GETTING_HERE: "Getting Here",
-      GIFT_REGISTRY: "Gift Registry",
-      QUESTIONS: "Questions"
+      THE_DAY: "婚礼当日",
+      GETTING_HERE: "交通指引",
+      GIFT_REGISTRY: "礼金与心意",
+      QUESTIONS: "常见问题"
     },
     TEXT: {
-      ORDER_OF_EVENTS: "Order of the Day",
-      VENUE_DESCRIPTION: "Immerse in the Yarra Valley is a stunning estate offering sweeping vineyard panoramas, lush gardens, and world-class facilities — a perfect backdrop for our celebration.",
+      ORDER_OF_EVENTS: "当日日程",
+      VENUE_DESCRIPTION: "亚拉谷 Immerse 庄园是一座迷人的庄园，拥有连绵起伏的葡萄园全景、郁郁葱葱的花园和世界一流的设施——是我们婚礼庆典的完美背景。",
       VENUE_LOCATION: [
-        "The venue is located at ", 
-        " , approximately one hour from Melbourne CBD."
+        "场地位于 ", 
+        " ，距离墨尔本中央商务区（CBD）约一小时车程。"
       ],
-      ACCOMODATION_TRAVEL_HEADING: "ACCOMODATION & CHARTED BUS SERVICE",
+      ACCOMODATION_TRAVEL_HEADING: "住宿与包车服务",
       ACCOMODATION_TRAVEL_DETAILS: [
-        "We are delighted to offer a complimentary chartered bus for guests travelling from Melbourne CBD — both ways, so you can celebrate freely. Please note that ",
-        "accommodation and transport are already arranged",
-        ". You will be staying at ",
-        "Hilton Melbourne Little Queen Street",
-        ". The chartered bus will pick you up and drop you off at the hotel.",
+        "我们很高兴为从墨尔本中央商务区（CBD）出发的宾客提供免费往返包车，以便大家尽情庆祝。请注意，",
+        "您的住宿和交通均已安排妥当",
+        "。您将入住 ",
+        "墨尔本小皇后街希尔顿酒店（Hilton Melbourne Little Queen Street）",
+        "。包车将在该酒店进行接送。",
       ],
-      ACCOMODATION_TRAVEL_DETAILS_DEPARTURE_HEADING: "Departure",
-      ACCOMODATION_TRAVEL_DETAILS_DEPARTURE_DETAILS: "Meet in the lobby at 1:45 PM for a 1:50 PM sharp departure from Hilton Melbourne Little Queen Street",
-      ACCOMODATION_TRAVEL_DETAILS_RETURN_HEADING: "Return",
-      ACCOMODATION_TRAVEL_DETAILS_RETURN_DETAILS: "10:00 PM from 雅拉谷 Immerse 庄园 back to Hilton Melbourne Little Queen Street",
-      GIFTS_REGISTRY: "Gifts & Registry",
-      GIFTS_REGISTRY_DECLINED: '\"We celebrate only for your company. Please know that we will not expect any gifts, red pockets, etc. Your laughter, company, and shared joy are all we need to make this day perfect.\"',
-      FREQUENTLY_ASKED_QUESTIONS: "Frequently Asked Questions",
-      FREQUENTLY_ASKED_QUESTIONS_DETAILS: "Everything you need to know about the day.",
-      STILL_HAVE_QUESTIONS: "Still have a question? We would love to hear from you.",
-      GET_IN_TOUCH: "Get in touch",
-        
-
+      ACCOMODATION_TRAVEL_DETAILS_DEPARTURE_HEADING: "出发信息",
+      ACCOMODATION_TRAVEL_DETAILS_DEPARTURE_DETAILS: "请于下午 1:45 在大堂集合，包车将于下午 1:50 从墨尔本小皇后街希尔顿酒店准时出发",
+      ACCOMODATION_TRAVEL_DETAILS_RETURN_HEADING: "返程信息",
+      ACCOMODATION_TRAVEL_DETAILS_RETURN_DETAILS: "晚上 10:00 从亚拉谷 Immerse 庄园出发，返回墨尔本小皇后街希尔顿酒店",
+      GIFTS_REGISTRY: "礼金与心意",
+      GIFTS_REGISTRY_DECLINED: '\"您的出席就是我们最好的礼物。请不要准备任何礼物或红包等。您的欢声笑语、陪伴以及与我们一同分享的喜悦，就是让这一天变得完美所需要的一切。\"',
+      FREQUENTLY_ASKED_QUESTIONS: "常见问题",
+      FREQUENTLY_ASKED_QUESTIONS_DETAILS: "关于婚礼当日您需要了解的一切。",
+      STILL_HAVE_QUESTIONS: "仍有疑问？我们非常期待收到您的消息。",
+      GET_IN_TOUCH: "与我们联系",
     }
   },
   RSVP: {
@@ -91,7 +87,7 @@ export const zh: Translation = {
       DEADLINE_LABEL: "回复截止日期",
     },
     FORM: {
-      YOUR_INVITATION: "Your invitation",
+      YOUR_INVITATION: "您的专属邀请函",
       INTRO: "请在下方确认每位宾客的的出席情况和饮食要求。",
       BTN_ACCEPT_ALL: "全部接受",
       BTN_DECLINE_ALL: "全部谢绝",
@@ -144,7 +140,6 @@ export const zh: Translation = {
     RECEPTION_TO_FOLLOW: "随后举行招待会",
     DETAILS_HEADER: "细节",
     DETAILS_BODY: "如需了解更多关于招待会、交通指引、着装要求及住宿的信息，请访问我们的网站:"
-
   },
   MAIN_PAGE: {
     CELEBRATE_MSG: "我们迫不及待地想和你们一起庆祝!"

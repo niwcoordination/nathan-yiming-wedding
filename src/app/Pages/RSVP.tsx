@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router";
-import { Check, X, Search, ChevronRight, RotateCcw } from "lucide-react";
+import { Check, RotateCcw } from "lucide-react";
 
 import {
   lookupGuest,
@@ -9,7 +9,7 @@ import {
 } from "../rsvp-api";
 
 import * as C from "../Constants";
-import type { MemberResponse, Household, HouseholdMember } from "../components/Interfaces";
+import type { MemberResponse, Household } from "../components/Interfaces";
 import { GoldDivider, GoldDividerThin } from "../components/Divider";
 import { NavBar } from "../components/NavBar";
 import { getTranslations } from "../language/translation";

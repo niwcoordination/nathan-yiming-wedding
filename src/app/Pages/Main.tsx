@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router";
+import {useNavigate } from "react-router";
 import { ChevronDown } from "lucide-react";
-import {VENUE_MAPS_QUERY } from "../Constants";
 import { getTranslations, getFAQsWithInterpolation } from "../language/translation";
 import {VENUE_ADDRESS, NAMES, WEDDING_DATE} from "../language/LangaugeAndTimeConstants"
 import { FooterBar } from "../components/Footer";
@@ -9,7 +8,7 @@ import { NavBar } from "../components/NavBar";
 import { setReturnPath } from "../helpers/helpers";
 import * as C from "../Constants";
 import { BackgroundImage } from "../components/Background";
-import { GoldDivider, GoldDividerThin, GoldDividerWithText } from "../components/Divider";
+import { GoldDividerThin, GoldDividerWithText } from "../components/Divider";
 import { GoldButton } from "../components/Button";
 
 import greatWallImage from "@/imports/photos/GreatWall.jpg";
@@ -17,16 +16,6 @@ import immerseChappel from "@/imports/photos/ImmerseChappel.jpg";
 import immerseEntry from "@/imports/photos/ImmerseEntry.jpg";
 import venueMap from "@/imports/VenueMap.jpg";
 import { VenueMap } from "../components/GoogleMap";
-
-// 1. Calculate an offset coordinate to the East of your venue
-const venueLat = -37.6152; // Replace with your actual venue latitude
-const venueLng = 145.3855; // Replace with your actual venue longitude
-const offsetLng = venueLng + 0.15; // Shifts the "camera focus" East, pushing your pin Left
-
-// 2. Format a directional query string: "from [offset] to [venue]"
-const offsetQuery = `from:${venueLat},${offsetLng}+to:${venueLat},${venueLng}`;
-
-
 
 // ── Countdown ──────────────────────────────────────────────────────────────
 function getTimeLeft() {
