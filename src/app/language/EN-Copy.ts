@@ -11,32 +11,28 @@ export const en: Translation = {
     { label: "Registry", id: "registry" },
     { label: "FAQ", id: "faq" },
   ],
-  SCHEDULE: [
+SCHEDULE: [
+  { time: "2:30 PM", event: "Guest Arrival & Check-In", detail: "Onsite accommodation opens. Drop off your bags and settle in before the festivities begin." },
+  { time: "3:00 PM", event: "Take Your Seats", detail: "Please make your way to the ceremony area to find a seat." },
+  { time: "3:30 PM", event: "The Ceremony", detail: "The wedding ceremony begins." },
+  { time: "4:00 PM", event: "Group Photos", detail: "Gather immediately following the ceremony for group portraits." },
+  { time: "4:30 PM", event: "Canapés, Cocktails & Cellar Door Tastings", detail: "Enjoy an hour of drinks, our signature welcome cocktail, and canapés. The Cellar Door is open for wine tastings during this time." },
+  { time: "5:30 PM", event: "Reception Commences", detail: "Guests transition into the main reception space as we welcome the newlyweds." },
+  { time: "7:30 PM", event: "Speeches", detail: 'Hear from our family and friends during the wedding speeches.' },
+  { time: "8:15 PM", event: "Cake Cutting", detail: "We cut the wedding cake." },
+  { time: "10:00 PM", event: "Farewell & Goodnight", detail: "The celebrations conclude. Have a safe trip home or a short walk back to your onsite room!" }
+],
 
-
-  { time: "3:00 PM", event: "Guest Arrival", detail: "Welcome to our wedding! Please find your seat before the ceremony begins." },
-  { time: "3:30 PM", event: "The Wedding Ceremony", detail: "Join us as we exchange vows and officially say 'I do'." },
-  { time: "4:00 PM", event: "Cocktail Hour", detail: "Head over to the terrace for signature cocktails and light bites while we take a few photos." },
-  { time: "5:00 PM", event: "Reception Commences", detail: "Find your seats in the main hall as we welcome the newlyweds and prepare for dinner." },
-  { time: "6:15 PM", event: "Toasts & Speeches", detail: "Raise a glass with us as our closest family and friends share a few words." },
-  { time: "7:00 PM", event: "Cake Cutting & First Dance", detail: "Watch us cut the cake and hit the floor for our first dance to kick off the party." },
-  { time: "7:30 PM", event: "Dance Floor Opens", detail: "Let loose, grab a drink, and dance the night away with us!" },
-  { time: "10:00 PM", event: "The Grand Send-Off", detail: "Join us for one final farewell as we wrap up the night and head off as newlyweds." }
-
-
-
-  ],
   FAQS: [
-    { question: "What is the dress code?", answer: "Formal attire. We welcome guests to embrace the romantic theme — soft blues, blush pinks, lavenders, or classic black tie. Please avoid wearing white or ivory out of respect for the bride." },
-    { question: "Are children welcome?", answer: "We love little ones! However, due to venue capacity we are only able to accommodate children who are named on the invitation. We hope you can enjoy the evening as grown-ups!" },
-    { question: "What time should I arrive?", answer: "Guests are warmly invited to arrive from 2:00 PM. The ceremony begins promptly at 3:00 PM — we recommend arriving by 2:45 PM to settle in and find your seat." },
-    { question: "Is there parking at the venue?", answer: "VENUE_NAME has on-site parking available. However, we strongly encourage guests to use our chartered bus service if you plan to fully enjoy the evenings celebrations." },
-    { question: "I have dietary requirements — what should I do?", answer: "Please note your dietary requirements when you RSVP. The venue can accommodate most needs with advance notice and we want every guest to feel well cared for." },
-    { question: "Can I take photos during the ceremony?", answer: "We are having an unplugged ceremony — please put away phones and cameras so everyone can be fully present. Our photographers will capture every moment. Photos are absolutely welcome at the reception!" },
-    { question: "What if the weather is bad?", answer: "VENUE_NAME has stunning indoor and covered outdoor spaces. The celebration will proceed beautifully regardless of weather — we have got you covered." },
-    { question: "When do I need to RSVP by?", answer: "Please RSVP no later than RSVP_CUTOFF_DISPLAY_EN — two months before the wedding. This helps us finalise catering, seating, and bus arrangements. We would love to know you are coming, so please don't leave it too late!" },
-    { question: "Will I receive more details closer to the date?", answer: "Yes! Once you RSVP, we will be in touch with all the finer details including exact bus stop locations, seating arrangements, and any updated information about the day." },
-  ],
+    { question: "When do I need to RSVP by?", answer: "Please RSVP no later than RSVP_CUTOFF_DISPLAY_EN (one month before the wedding). This helps us finalise catering, seating, and bus arrangements. We would love to know you are coming, so please don't leave it too late!" },
+    { question: "Can I bring a plus one?", answer: "Please note that only guests named on the invitation may attend. If you would like to bring a plus one, please reach out to either of us and we will do our best to get them added." },
+    { question: "What is the dress code?", answer: "Formal attire. This includes a suit and tie, full-length gown or elegant formal wear. It's winter here, so please dress warmly! Please avoid wearing white, ivory or red out of respect for the bride." },
+    { question: "What time should I arrive?", answer: "Guests are warmly invited to arrive from 2:30 PM. The ceremony begins promptly at 3:30 PM — we recommend arriving by 3:00 PM to settle in and find your seat." },
+    { question: "Is there parking at the venue?", answer: "Immerse has on-site parking available. Please refer to the map for further guidance." },
+    { question: "I have dietary requirements — what should I do?", answer: "Please note your dietary requirements when you RSVP. The venue can accommodate most needs with advance notice and we want every guest to feel well cared for!" },
+    { question: "Can I take photos during the ceremony?", answer: "During the ceremony, we request that you not to take photos or videos. Our photographers will capture every moment. Photos are absolutely welcome at the reception!" },
+    { question: "What if the weather is bad?", answer: "Our ceremony and receptiona re both planned indoors with heaters. The celebration will proceed beautifully regardless of weather." }
+  ],  
   NAV: {
     GO_BACK: "Back",
     SWITCH_LANGUAGE: "切换语言",
@@ -70,7 +66,7 @@ export const en: Translation = {
       ACCOMODATION_TRAVEL_DETAILS_RETURN_HEADING: "King Suite",
       ACCOMODATION_TRAVEL_DETAILS_RETURN_DETAILS: "$325 per night, sleeps 2 adults (Option for 2 single beds for extra $30)",
       GIFTS_REGISTRY: "Gifts & Registry",
-      GIFTS_REGISTRY_DECLINED: '\"We celebrate only for your company. Please know that we will not expect any gifts, red pockets, etc. Your laughter, company, and shared joy are all we need to make this day perfect.\"',
+      GIFTS_REGISTRY_DECLINED: 'We celebrate only for your company. Please know that we will not accept any gifts, red pockets, etc. Your laughter, company, and shared joy are all we need to make this day perfect.',
       FREQUENTLY_ASKED_QUESTIONS: "Frequently Asked Questions",
       FREQUENTLY_ASKED_QUESTIONS_DETAILS: "Everything you need to know about the day.",
       STILL_HAVE_QUESTIONS: "Still have a question? We would love to hear from you.",

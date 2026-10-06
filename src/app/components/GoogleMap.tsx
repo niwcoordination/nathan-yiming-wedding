@@ -3,7 +3,6 @@ import { getTranslations } from '../language/translation';
 import { VENUE_MAPS_QUERY } from '../Constants';
 import * as C from "../Constants"
 
-// Put this component where your current JSX lives
 export function VenueMap() {
   const selectedLanguage = getTranslations();
   const [isInChina, setIsInChina] = useState(false);
@@ -17,7 +16,7 @@ export function VenueMap() {
     }
   }, []);
 
-  // If the user is in China, gracefully render a fallback instead of a broken iframe
+  // If the user is in China, render a fallback 
 if (isInChina) {
   return (
     <div 
@@ -35,9 +34,6 @@ if (isInChina) {
     </div>
   );
 }
-
-
-  // Your original Google Maps code for international users
   return (
     <div style={{ border: C.GOLD_BORDERS, borderRadius: "2px" }} className="w-full h-[450px] overflow-hidden">
       <iframe 

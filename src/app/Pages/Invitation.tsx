@@ -14,7 +14,6 @@ const searchParams = new URLSearchParams(window.location.search);
 
 
 const RSVPURL = () => {
-  
   const guest = searchParams.get('guest') || "NoneProvided";
   const lang = searchParams.get('lang') || "NoneProvided";
   const URL = `${C.WEBSITE_URL}/RSVP/?lang=${lang}&guest=${guest}`

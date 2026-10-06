@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { ChevronDown } from "lucide-react";
 import { getTranslations, getFAQsWithInterpolation } from "../language/translation";
 import {VENUE_ADDRESS, NAMES, WEDDING_DATE} from "../language/LangaugeAndTimeConstants"
@@ -16,7 +16,7 @@ import immerseChappel from "@/imports/photos/ImmerseChappel.jpg";
 import immerseEntry from "@/imports/photos/ImmerseEntry.jpg";
 import venueMap from "@/imports/VenueMap.jpg";
 import { VenueMap } from "../components/GoogleMap";
-
+import type { NavigateFunction } from "react-router"; 
 // ── Countdown ──────────────────────────────────────────────────────────────
 function getTimeLeft() {
   const diff = WEDDING_DATE.getTime() - Date.now();
@@ -79,6 +79,57 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   );
 }
 
+
+function useSectionScrollSaver() {
+  useEffect(() => {
+    // 1. RESTORE: Check sessionStorage or URL on load and jump to the active section
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentParam = urlParams.get("section");
+
+    const targetSection = currentParam;
+
+    if (targetSection) {
+      setTimeout(() => {
+        const element = document.getElementById(targetSection);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 200);
+    }
+
+    // 2. TRACK: Watch sections as they enter and leave the viewport
+    const observerOptions = {
+      root: null,
+      rootMargin: "-15% 0px -65% 0px", 
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.target.id) {
+          const sectionId = entry.target.id;
+          sessionStorage.setItem("lastNonLanguagePage", "/?section="+sectionId);
+
+          if (sectionId === "details") {
+            window.history.replaceState(null, "", window.location.pathname);
+          } else {
+            window.history.replaceState(null, "", `?section=${sectionId}`);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+}
+
 function Section({ id, children, className = "" }: { id?: string; children: React.ReactNode; className?: string }) {
   return <section id={id} className={`w-full ${className}`}>{children}</section>;
 }
@@ -94,6 +145,8 @@ export default function Main() {
 
   const navigate = useNavigate();
 
+  useSectionScrollSaver();
+  
   setReturnPath();
   return (
      <div className="relative min-h-screen" style={{ fontFamily: C.FONT_STANDARD() }}>
@@ -269,18 +322,6 @@ export default function Main() {
           </div>
         </Section>
 
-        {/* ── Venue map ─────────────────────────────────────────────────── */}
-        {/* <div className="px-5 md:px-10 py-10 max-w-6xl mx-auto">
-          <div mb-10 style={{ border: C.GOLD_BORDERS, borderRadius: "2px" }}>
-             <img 
-                    src={venueMap}
-                    alt="Scenic rolling green hills viewed through open estate doors in the Yarra Valley" 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-                  />
-          </div>
-                      <iframe title={`${selectedLanguage.LOCATION.VENUE_NAME} — Venue Location`} src={`https://www.google.com/maps?q=${VENUE_MAPS_QUERY}&output=embed`} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
-
-        </div> */}
 
         <div className="px-5 md:px-10 py-10 max-w-6xl mx-auto flex flex-col gap-10">
   
