@@ -31,7 +31,6 @@ export default function Root() {
     if(qsLangauge){
       localStorage.setItem("language", qsLangauge.toLowerCase());
     }
-    if (location.pathname !== "/") return;
     const lang = localStorage.getItem("language");
 
     if (!lang && !qsLangauge) {

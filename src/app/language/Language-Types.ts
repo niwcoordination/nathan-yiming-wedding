@@ -35,7 +35,7 @@ export interface Translation {
       ACCOMODATION_TRAVEL_DETAILS_RETURN_HEADING: string;
       ACCOMODATION_TRAVEL_DETAILS_RETURN_DETAILS: string;
       GIFTS_REGISTRY: string;
-      GIFTS_REGISTRY_DECLINED: string;
+      GIFTS_REGISTRY_DECLINED: [string, string, string];
       FREQUENTLY_ASKED_QUESTIONS: string;
       FREQUENTLY_ASKED_QUESTIONS_DETAILS: string;
       STILL_HAVE_QUESTIONS: string;

@@ -346,10 +346,13 @@ export default function Main() {
         <Section id="registry" className="px-5 md:px-10 py-14">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-xl md:text-2xl mb-8" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>{selectedLanguage.MAIN.TEXT.GIFTS_REGISTRY}</h2>
-            <div className="px-8 py-10 md:px-14 md:py-14" style={{ border: `1px solid ${C.GOLD}30`, borderRadius: "2px" }}>
-              <span style={{ color: C.GOLD, fontSize: "1.4rem", display: "block", marginBottom: "1.5rem" }}>✦</span>
+            <div className="px-8 py-10 md:px-14 md:py-14" style={{ border: `1px solid ${C.GOLD_BORDERS}`, borderRadius: "2px" }}>
+              <span style={{ color: C.GOLD, fontSize: "1.75rem", display: "block", marginBottom: "1rem" }}>✦</span>
               <p className="text-sm md:text-base leading-loose italic" style={{fontFamily: C.FONT_STANDARD(), color: C.DARK_GREY, fontSize: "1rem", lineHeight: 1.7}}>
-                {selectedLanguage.MAIN.TEXT.GIFTS_REGISTRY_DECLINED}
+                {selectedLanguage.MAIN.TEXT.GIFTS_REGISTRY_DECLINED[0]} 
+                <span className="font-semibold" style={{ color: C.DEEP_BLUE }}>{selectedLanguage.MAIN.TEXT.GIFTS_REGISTRY_DECLINED[1]}</span>
+                {selectedLanguage.MAIN.TEXT.GIFTS_REGISTRY_DECLINED[2]} 
+
               </p>
             </div>
           </div>
@@ -366,13 +369,13 @@ export default function Main() {
             <div className="mb-10">
               {FAQS.map((faq, i) => <FAQItem key={i} question={faq.question} answer={faq.answer} />)}
             </div>
-            <div className="text-center pt-8 border-t" style={{ borderColor: `${C.GOLD}18` }}>
+            <div className="text-center pt-8 border-t" style={{ borderColor: C.GOLD_BORDERS }}>
               <p className="text-sm mb-5" style={{ color: C.GREY, fontFamily: C.FONT_STANDARD(), fontSize: "1rem", lineHeight: 1.7 }}>
                 {selectedLanguage.MAIN.TEXT.STILL_HAVE_QUESTIONS}
               </p>
-              <a href="mailto:n.i.r.coordination@gmail.com" className="inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase pb-px border-b transition-opacity hover:opacity-60" style={{fontSize: "0.8rem", fontFamily: C.FONT_BLOCK(), color: C.DARK_GOLD, borderColor: `${C.DARK_GOLD}60` }}>
+              <p className="inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase pb-px border-b" style={{fontSize: "0.8rem", fontFamily: C.FONT_BLOCK(), color: C.DARK_GOLD, borderColor: C.GOLD }}>
                 {selectedLanguage.MAIN.TEXT.GET_IN_TOUCH}
-              </a>
+              </p>
             </div>
           </div>
         </Section>

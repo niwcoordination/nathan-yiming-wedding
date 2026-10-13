@@ -27,11 +27,11 @@ SCHEDULE: [
     { question: "When do I need to RSVP by?", answer: "Please RSVP no later than RSVP_CUTOFF_DISPLAY_EN (one month before the wedding). This helps us finalise catering, seating, and bus arrangements. We would love to know you are coming, so please don't leave it too late!" },
     { question: "Can I bring a plus one?", answer: "Please note that only guests named on the invitation may attend. If you would like to bring a plus one, please reach out to either of us and we will do our best to get them added." },
     { question: "What is the dress code?", answer: "Formal attire. This includes a suit and tie, full-length gown or elegant formal wear. It's winter here, so please dress warmly! Please avoid wearing white, ivory or red out of respect for the bride." },
-    { question: "What time should I arrive?", answer: "Guests are warmly invited to arrive from 2:30 PM. The ceremony begins promptly at 3:30 PM — we recommend arriving by 3:00 PM to settle in and find your seat." },
+    { question: "What time should I arrive?", answer: "Guests are warmly invited to arrive from 2:30 PM. The ceremony begins promptly at 3:30 PM. We recommend arriving by 3:00 PM to settle in and find your seat." },
     { question: "Is there parking at the venue?", answer: "Immerse has on-site parking available. Please refer to the map for further guidance." },
     { question: "I have dietary requirements — what should I do?", answer: "Please note your dietary requirements when you RSVP. The venue can accommodate most needs with advance notice and we want every guest to feel well cared for!" },
-    { question: "Can I take photos during the ceremony?", answer: "During the ceremony, we request that you not to take photos or videos. Our photographers will capture every moment. Photos are absolutely welcome at the reception!" },
-    { question: "What if the weather is bad?", answer: "Our ceremony and receptiona re both planned indoors with heaters. The celebration will proceed beautifully regardless of weather." }
+    { question: "Can I take photos during the ceremony?", answer: "During the ceremony, we request that you not to take photos or videos. Our photographer and videographer will capture every moment. Photos are absolutely welcome at the reception!" },
+    { question: "What if the weather is bad?", answer: "Our ceremony and reception are both planned indoors with heaters. The celebration will proceed beautifully regardless of weather." }
   ],  
   NAV: {
     GO_BACK: "Back",
@@ -58,7 +58,7 @@ SCHEDULE: [
         "Onsite accomodation is available at the venue. Please note that ",
         "these rooms are limited", //This will be colored in the main page
         ", so if you would like to stay onsite, we recommend booking early. ",
-        "Please reach out to us separately if you are looking at booking at the venue", //This will be colored in the main page
+        "Please reach out to us separately if you are looking to book at the venue", //This will be colored in the main page
         " and we will provide you with more details. Prices and room sizes available below.",
       ],
       ACCOMODATION_TRAVEL_DETAILS_DEPARTURE_HEADING: "Queen Suite",
@@ -66,14 +66,11 @@ SCHEDULE: [
       ACCOMODATION_TRAVEL_DETAILS_RETURN_HEADING: "King Suite",
       ACCOMODATION_TRAVEL_DETAILS_RETURN_DETAILS: "$325 per night, sleeps 2 adults (Option for 2 single beds for extra $30)",
       GIFTS_REGISTRY: "Gifts & Registry",
-      GIFTS_REGISTRY_DECLINED: 'We celebrate only for your company. Please know that we will not accept any gifts, red pockets, etc. Your laughter, company, and shared joy are all we need to make this day perfect.',
+      GIFTS_REGISTRY_DECLINED: ["Please treat yourself instead and just bring your company! ", "We have a strict no gifts or red packets policy. ", "Your presence, laughter, and shared joy is all it will take to make our day perfect."], //'We celebrate only for your company. Please know that we will not accept any gifts, red pockets, etc. Your laughter, company, and shared joy are all we need to make this day perfect.',
       FREQUENTLY_ASKED_QUESTIONS: "Frequently Asked Questions",
       FREQUENTLY_ASKED_QUESTIONS_DETAILS: "Everything you need to know about the day.",
-      STILL_HAVE_QUESTIONS: "Still have a question? We would love to hear from you.",
-      GET_IN_TOUCH: "Get in touch",
-        
-        
-
+      STILL_HAVE_QUESTIONS: "Still have a question?",
+      GET_IN_TOUCH: "Please call or message us directly.",
     }
   },
   RSVP: {
@@ -91,7 +88,7 @@ SCHEDULE: [
     },
     FORM: {
       YOUR_INVITATION: "Your invitation",
-      INTRO: "Please confirm attendance and dietary requirements for each person below.",
+      INTRO: "Please confirm attendance and dietary requirements for each person below. Changes will only be saved once you confirm your RSVP at the bottom of the page.",
       BTN_ACCEPT_ALL: "Accept All",
       BTN_DECLINE_ALL: "Decline All",
       BTN_ATTENDING: "Attending",

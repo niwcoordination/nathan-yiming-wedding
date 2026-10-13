@@ -66,7 +66,9 @@ export const zh: Translation = {
       ACCOMODATION_TRAVEL_DETAILS_RETURN_HEADING: "返程信息",
       ACCOMODATION_TRAVEL_DETAILS_RETURN_DETAILS: "晚上 10:00 从亚拉谷 Immerse 庄园出发，返回墨尔本小皇后街希尔顿酒店",
       GIFTS_REGISTRY: "礼金与心意",
-      GIFTS_REGISTRY_DECLINED: '\"您的出席就是我们最好的礼物。请不要准备任何礼物或红包等。您的欢声笑语、陪伴以及与我们一同分享的喜悦，就是让这一天变得完美所需要的一切。\"',
+      GIFTS_REGISTRY_DECLINED: ["Please treat yourself instead and just bring your company!", 
+        "We have a strict no gifts or red packets policy.", //This will be colored and bold the main page 
+        "Your presence, laughter, and shared joy is all it will take to make our day perfect."], //'We celebrate only for your company. Please know that we will not accept any gifts, red pockets, etc. Your laughter, company, and shared joy are all we need to make this day perfect.',
       FREQUENTLY_ASKED_QUESTIONS: "常见问题",
       FREQUENTLY_ASKED_QUESTIONS_DETAILS: "关于婚礼当日您需要了解的一切。",
       STILL_HAVE_QUESTIONS: "仍有疑问？我们非常期待收到您的消息。",
