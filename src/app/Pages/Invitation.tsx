@@ -39,7 +39,7 @@ function LinkComponent() {
     <a 
       className="block pt-2 underline opacity-90 hover:opacity-100 hover:text-blue-600 transition-all break-all" 
       style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE, fontWeight: 500, fontSize: "0.8rem" }}
-      href={`${C.WEBSITE_URL}`}
+      href={`${RSVPURL()}`}
       onClick={handleLinkClick}
       >
       {C.WEBSITE_URL}

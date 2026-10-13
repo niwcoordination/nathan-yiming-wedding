@@ -34,10 +34,10 @@ export const zh: Translation = {
     { question: "What if the weather is bad?", answer: "Our ceremony and receptiona re both planned indoors with heaters. The celebration will proceed beautifully regardless of weather." }
   ],  
   NAV: {
-    GO_BACK: "后退",
-    SWITCH_LANGUAGE: "切换语言",
-    SWITCH_LANGUAGE_SHORT: "中",
-    RSVP: "期待回复"
+    GO_BACK:"后退",
+    SWITCH_LANGUAGE:"Switch Language",
+    SWITCH_LANGUAGE_SHORT:"EN",
+    RSVP:"期待回复"
   },
   MAIN: {
     HEADERS: {
