@@ -235,32 +235,47 @@ Please change the parent <Route path="${z}"> to <Route path="${z==="/"?"*":`${z}
     transform: rotateX(0deg);
   }
 
+  /* Invite 1 Container: Unrolls first on close, rolls out last on open */
   .slide-out.invite-1-container { 
     transform: translateY(-860px); 
     z-index: 50;
+    /* FIX: Explicitly tell Safari to smoothly transition from 0px to -860px, preventing the pre-delay jump */
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.85s, z-index 0s linear 1.45s; 
   }
-  .slide-out.invite-1-container .mobile-3d-flap { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.45s; }
+  .slide-out.invite-1-container .mobile-3d-flap { 
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 1.45s; 
+  }
   
+  /* Invite 2 Container: Unrolls second on close, rolls out first on open */
   .slide-out.invite-2-container { 
     transform: translateY(-400px); 
     z-index: 49;
+    /* FIX: Explicitly map the translation pathway across the 2.15s delay window */
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1) 2.15s, z-index 0s linear 2.75s; 
   }
-  .slide-out.invite-2-container .mobile-3d-flap { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 2.75s; }
-
-  :not(.slide-out).invite-2-container .mobile-3d-flap { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0s; }
-  :not(.slide-out).invite-1-container .mobile-3d-flap { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0s; }
+  .slide-out.invite-2-container .mobile-3d-flap { 
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 2.75s; 
+  }
 
   :not(.slide-out).invite-2-container { 
     transform: translateY(0px); 
     z-index: 20;
+    /* FIX: Forces Safari to explicitly anchor the layer at 0px while waiting out the close sequence */
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.4s, z-index 0s linear 0.4s; 
   }
+  
   :not(.slide-out).invite-1-container { 
     transform: translateY(0px); 
     z-index: 20;
+    /* FIX: Solidifies the landing anchor frame for the primary card */
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.4s, z-index 0s linear 0.4s; 
+  }
+
+  :not(.slide-out).invite-2-container .mobile-3d-flap { 
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0s; 
+  }
+  :not(.slide-out).invite-1-container .mobile-3d-flap { 
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0s; 
   }
   
   .mobile-envelope-body-track {
