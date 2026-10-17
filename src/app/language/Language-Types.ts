@@ -3,7 +3,6 @@ export interface Translation {
   SCHEDULE: Array<{ time: string; event: string; detail: string }>;
   FAQS: Array<{ question: string; answer: string }>;
   NAV: {
-    GO_BACK: string;
     SWITCH_LANGUAGE: string;
     SWITCH_LANGUAGE_SHORT: string;
     RSVP: string;
@@ -11,11 +10,9 @@ export interface Translation {
   DATES: {
     WEDDING_DATE: string;
     CUTOFF_RSVP_DATE: string;
-    CEREMONY_START_TIME: string;
   };
   LOCATION:{
     VENUE_NAME: string; // "Immerse in the Yarra Valley";
-    VENUE_NAME_SHORT: string; // = "Immerse Yarra Valley";
   };
   MAIN: {
     HEADERS: {
@@ -37,7 +34,6 @@ export interface Translation {
       GIFTS_REGISTRY: string;
       GIFTS_REGISTRY_DECLINED: [string, string, string];
       FREQUENTLY_ASKED_QUESTIONS: string;
-      FREQUENTLY_ASKED_QUESTIONS_DETAILS: string;
       STILL_HAVE_QUESTIONS: string;
       GET_IN_TOUCH: string;
       
@@ -46,7 +42,6 @@ export interface Translation {
   },
   RSVP: {
     SEARCH: {
-      HERO_MESSAGE: string;
       INTRO: string;
       FIRST_NAME: string;
       LAST_NAME: string;
@@ -54,14 +49,11 @@ export interface Translation {
       NOT_FOUND: string;
       MISSING_NAME: string;
       CANT_FIND: string;
-      CONTACT_LINK: string;
       DEADLINE_LABEL: string;
     };
     FORM: {
       YOUR_INVITATION: string;
       INTRO: string;
-      BTN_ACCEPT_ALL: string;
-      BTN_DECLINE_ALL: string;
       BTN_ATTENDING: string;
       BTN_DECLINE: string;
       DIETARY_LABEL: string;
@@ -105,5 +97,9 @@ export interface Translation {
   };
   MAIN_PAGE: {
     CELEBRATE_MSG: String;
+    DAYS: String;
+    HOURS: String;
+    MINUTES: String;
+    SECONDS: String;
   };
 }

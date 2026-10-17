@@ -15,10 +15,10 @@ import { NavBar } from "../components/NavBar";
 import { getTranslations } from "../language/translation";
 import {RSVP_CUTOFF_DATE} from "../language/LangaugeAndTimeConstants"
 import { BackgroundImage } from "../components/Background";
-import { getColouredEmojiString, setReturnPath } from "../helpers/helpers";
+import { setReturnPath } from "../helpers/helpers";
 import { RSVPDeadline } from "../components/Footer";
 import { ErrorMessage } from "../components/ErrorMessage";
-import { GoldButton, GreyButton } from "../components/Button";
+import { GoldButton } from "../components/Button";
 import { Field } from "../components/Field";
 import { MemberCard } from "../components/MemberCards";
 
@@ -54,8 +54,8 @@ export default function RSVP() {
 
     lookupGuest({ guestId: storedGuestId })
       .then(async (result) => {
-        if (!result) {
-          localStorage.removeItem(C.GUEST_ID_KEY);
+        if (result instanceof Error || !result) {
+          if (!result) localStorage.removeItem(C.GUEST_ID_KEY);
           return;
         }
         setHousehold(result);
@@ -76,15 +76,21 @@ export default function RSVP() {
     setLoading(true);
     try {
       const result = await lookupGuest({firstName: firstName.trim(), lastName: lastName.trim()});
+      console.log(result)
+
+      if (result instanceof Error) {
+        setSearchError(selectedLanguage.RSVP.SYSTEM.ERROR_GENERIC);
+        return;
+      }
 
       if (!result) {
         setSearchError(selectedLanguage.RSVP.SEARCH.NOT_FOUND);
         return;
       }
-          localStorage.setItem(C.GUEST_ID_KEY, result.guestId);
-          setHousehold(result);
-          setResponses(initResponses(result.members));
-          setStep(result.allAccepted ? "submitted" : "form");
+      localStorage.setItem(C.GUEST_ID_KEY, result.guestId);
+      setHousehold(result);
+      setResponses(initResponses(result.members));
+      setStep(result.allAccepted ? "submitted" : "form");
     } catch {
       setSearchError(selectedLanguage.RSVP.SYSTEM.ERROR_GENERIC);
     } finally {
@@ -96,14 +102,6 @@ export default function RSVP() {
 
   const handleUpdateResponse = (memberId: string, updated: MemberResponse) => {
     setResponses((prev) => ({ ...prev, [memberId]: updated }));
-  };
-
-  const handleBulkSet = (rsvp: true | false) => {
-    setResponses((prev) =>
-      Object.fromEntries(
-        Object.entries(prev).map(([id, r]) => [id, { ...r, rsvp, dietary: rsvp === false ? "" : r.dietary }]),
-      ),
-    );
   };
 
   const handleSubmit = async () => {
@@ -146,7 +144,6 @@ export default function RSVP() {
   };
 
   const attendingCount = Object.values(responses).filter((r) => r.rsvp === true).length;
-  const memberCount = household?.members.length ?? 0;
 
   setReturnPath();
 
@@ -157,7 +154,7 @@ export default function RSVP() {
       <BackgroundImage />
       <div className="relative" style={{ zIndex: 1 }}>
         <NavBar />
-        <main className="min-h-screen pt-28 pb-24 px-5 md:px-10">
+          <main className="min-h-screen pt-40 pb-24 px-5 md:pt-90 md:px-10">
           <div className="max-w-lg mx-auto">
 
             {/* ── Initial loading (checking stored guestId) ───────────── */}
@@ -171,39 +168,40 @@ export default function RSVP() {
             {/* ── Search screen ───────────────────────────────────────── */}
             {step === "search" && !loading && (
               <div>
-                <div className="text-center mb-10">
-                  <p className="text-xs uppercase mb-3" style={{ fontFamily: C.FONT_BLOCK(), fontSize: "clamp(0.9rem, 1.2rem, 1.5rem)", color: C.PURPLE }}>
-                    {selectedLanguage.RSVP.SEARCH.HERO_MESSAGE}
-                  </p>
+                <div className="text-center">
                   <h1 style={{ fontFamily: C.FONT_CURSIVE(), fontSize: "clamp(3rem, 9vw, 4.5rem)", color: C.DEEP_BLUE, lineHeight: 1 }}>
                     {selectedLanguage.NAV.RSVP}
                   </h1>
                   <GoldDivider />
-                  <p className="text-sm leading-loose" style={{ fontFamily: C.FONT_STANDARD(),  fontSize: "clamp(1rem, 1.25rem, 1.5rem)", color: C.GREY, lineHeight: 1.5 }}>
-                    {selectedLanguage.RSVP.SEARCH.INTRO}
+                  <p className="text-sm leading-loose md:px-12" style={{ fontFamily: C.FONT_STANDARD(),  fontSize: "clamp(1rem, 1.25rem, 1.5rem)", color: C.GREY, lineHeight: 1.5 }}>
+                    {selectedLanguage.RSVP.SEARCH.INTRO} 
                   </p>
                 </div>
                 
                 {/* Search panel */}
-                <div className="p-6 md:p-8" style={{ border: `1px solid ${C.GOLD_BORDERS}`, borderRadius: "2px", background: C.MINMAL_TRANSPARENT_WHITE }}>
+                <div className="my-6 p-6 md:p-8" style={{ border: `1px solid ${C.GOLD_BORDERS}`, borderRadius: "2px", background: C.MINIMAL_TRANSPARENT_WHITE }}>
                   {/* Name inputs */}
                   <div className="grid grid-cols-2 gap-3 mb-5">
                     <Field label={selectedLanguage.RSVP.SEARCH.FIRST_NAME} value={firstName} onChange={setFirstName} onEnter={handleSearch} />
                     <Field label={selectedLanguage.RSVP.SEARCH.LAST_NAME} value={lastName} onChange={setLastName} onEnter={handleSearch} />
                   </div>
                   {searchError && <ErrorMessage errorMsg={searchError} />}
-                  <GoldButton id={"FindInvitation"}  button_text={[getColouredEmojiString("🔎︎", C.WHITE), " ", selectedLanguage.RSVP.SEARCH.BTN]} onClickFunction={handleSearch} paddingHorizontal={"10"} paddingVertical={"4"} width={"100%"} />
+                  <GoldButton id={"FindInvitation"}  button_text={[selectedLanguage.RSVP.SEARCH.BTN]} onClickFunction={handleSearch} paddingHorizontal={"10"} paddingVertical={"4"} width={"100%"} />
                 </div>
 
-                <p className="text-center text-xs my-6 leading-loose" style={{ color: C.GREY, fontFamily: C.FONT_BLOCK(), fontSize: "0.9rem" }}>
-                  {selectedLanguage.RSVP.SEARCH.CANT_FIND}{" "}
-                  <a href={`mailto:${C.CONTACT_EMAIL}`} className="underline transition-opacity hover:opacity-60" style={{ color: C.DARK_GOLD }}>
-                    {selectedLanguage.RSVP.SEARCH.CONTACT_LINK}
-                  </a>
-                </p>
-                
-                <GoldDividerThin />
                 <RSVPDeadline />
+             
+                <GoldDividerThin />
+       
+                <div className="text-center" style={{ borderColor: C.GOLD_BORDERS }}>
+                  <p className="text-sm mb-3" style={{ color: C.GREY, fontFamily: C.FONT_BLOCK(), fontSize: "1rem", lineHeight: 1.7 }}>
+                    {selectedLanguage.RSVP.SEARCH.CANT_FIND}
+                  </p>
+                  <p className="inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase pb-px border-b" style={{fontSize: "0.8rem", fontFamily: C.FONT_BLOCK(), color: C.DARK_GOLD, borderColor: C.GOLD }}>
+                    {selectedLanguage.MAIN.TEXT.GET_IN_TOUCH}
+                  </p>
+                </div>
+        
               </div>
             )}
 
@@ -219,7 +217,7 @@ export default function RSVP() {
                     {household.householdName}
                   </h1>
                   <GoldDivider />
-                <p className="text-sm leading-loose" style={{ fontFamily: C.FONT_STANDARD(),  fontSize: "clamp(1rem, 1.25rem, 1.5rem)", color: C.GREY, lineHeight: 1.5 }}>
+                <p className="text-sm leading-loose px-3" style={{ fontFamily: C.FONT_STANDARD(),  fontSize: "clamp(1rem, 1.25rem, 1.5rem)", color: C.GREY, lineHeight: 1.5 }}>
                     {selectedLanguage.RSVP.FORM.INTRO}
                   </p>
                 </div>
@@ -229,17 +227,7 @@ export default function RSVP() {
                 {isPastCutoff && (
                   <div className="mb-6 px-4 py-4 text-xs leading-relaxed text-center" style={{ color: C.DARK_GOLD, background: `${C.GOLD_LIGHT_BACKGROUND}`, border: `1px solid ${C.GOLD_BORDERS}`, borderRadius: "2px", fontFamily: C.FONT_BLOCK(), letterSpacing: "0.07em" }}>
                     {selectedLanguage.RSVP.FORM.PAST_CUTOFF_FORM(selectedLanguage.DATES.CUTOFF_RSVP_DATE)}
-                    <a href={`mailto:${C.CONTACT_EMAIL}`} className="underline hover:opacity-70" style={{ color: C.DARK_GOLD }}>{selectedLanguage.RSVP.FORM.PAST_CUTOFF_LINK}</a>.
-                  </div>
-                )}
-
-                {/* Bulk actions — only for multi-person households, before cutoff */}
-                {memberCount > 1 && !isPastCutoff && (
-                  <div className="grid grid-cols-2 gap-2 mb-5">
-                    <GoldButton id={"AcceptAll"}  button_text={[getColouredEmojiString("✓", C.WHITE), " ", selectedLanguage.RSVP.FORM.BTN_ACCEPT_ALL]} 
-                      onClickFunction={() => handleBulkSet(true)} paddingHorizontal={"0"} paddingVertical={"3"} width={"100%"} />
-                    <GreyButton id={"DeclineAll"}  button_text={[getColouredEmojiString("✗", C.WHITE), " ", selectedLanguage.RSVP.FORM.BTN_DECLINE_ALL]}
-                      onClickFunction={() => handleBulkSet(false)} paddingHorizontal={"0"} paddingVertical={"3"} width={"100%"} />
+                    <span className="underline" style={{ color: C.DARK_GOLD }}>{selectedLanguage.RSVP.FORM.PAST_CUTOFF_LINK}</span>.
                   </div>
                 )}
 
@@ -274,7 +262,7 @@ export default function RSVP() {
                 )}
 
                 {/* Wrong household? */}
-                <button onClick={handleNotMe} className="w-full mt-3 mb-5 py-2.5 text-xs tracking-[0.15em] uppercase flex items-center justify-center gap-1.5 transition-all hover:opacity-60" style={{ fontFamily: C.FONT_BLOCK(), color: C.DARK_GREY }}>
+                <button onClick={handleNotMe} className="w-full mt-5 mb-5 py-2.5 text-xs tracking-[0.15em] uppercase flex items-center justify-center gap-1.5 transition-all hover:opacity-60" style={{ fontFamily: C.FONT_BLOCK(), color: C.DARK_GREY }}>
                   <RotateCcw size={11} strokeWidth={1.5} />
                   {selectedLanguage.RSVP.FORM.NOT_ME}
                 </button>
@@ -323,7 +311,7 @@ export default function RSVP() {
                 {isPastCutoff ? (
                   <div className="px-4 py-4 text-xs leading-relaxed text-center" style={{ color: C.DARK_GOLD, background: `${C.GOLD_LIGHT_BACKGROUND}`, border: `1px solid ${C.GOLD_BORDERS}`, borderRadius: "2px", fontFamily: C.FONT_BLOCK(), letterSpacing: "0.07em" }}>
                     {selectedLanguage.RSVP.FORM.PAST_CUTOFF_FORM(selectedLanguage.DATES.CUTOFF_RSVP_DATE)}
-                    <a href={`mailto:${C.CONTACT_EMAIL}`} className="underline hover:opacity-70" style={{ color: C.DARK_GOLD }}>{selectedLanguage.RSVP.FORM.PAST_CUTOFF_LINK}</a>.
+                    <span className="underline" style={{ color: C.DARK_GOLD }}>{selectedLanguage.RSVP.FORM.PAST_CUTOFF_LINK}</span>.
                   </div>
                 ) : (
 
@@ -332,12 +320,12 @@ export default function RSVP() {
                 )}
 
                 {!isPastCutoff && (
-                  <p className="text-center text-xs mt-4" style={{ color: C.GREY, fontFamily: C.FONT_STANDARD(), fontSize: "1rem" }}>
+                  <p className="text-center text-xs mt-4 py-2.5" style={{ color: C.GREY, fontFamily: C.FONT_STANDARD(), fontSize: "1rem" }}>
                     {selectedLanguage.RSVP.CONFIRMATION.CHANGES_UNTIL} <span style={{ color: C.DARK_GOLD }}>{selectedLanguage.DATES.CUTOFF_RSVP_DATE}</span>
                   </p>
                 )}
 
-                <button onClick={handleNotMe} className="w-full mt-4 py-2.5 text-xs tracking-[0.15em] uppercase flex items-center justify-center gap-1.5 transition-all hover:opacity-60" style={{ fontFamily: C.FONT_BLOCK(), fontSize: "0.9rem", color: C.DARK_GREY }}>
+                <button onClick={handleNotMe} className="w-full py-2.5 text-xs tracking-[0.15em] uppercase flex items-center justify-center gap-1.5 transition-all hover:opacity-60" style={{ fontFamily: C.FONT_BLOCK(), fontSize: "0.9rem", color: C.DARK_GREY }}>
                   <RotateCcw size={11} strokeWidth={1.5} />
                   {selectedLanguage.RSVP.CONFIRMATION.NOT_MY_RSVP}
                 </button>

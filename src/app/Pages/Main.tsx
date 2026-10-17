@@ -16,7 +16,7 @@ import immerseChappel from "@/imports/photos/ImmerseChappel.jpg";
 import immerseEntry from "@/imports/photos/ImmerseEntry.jpg";
 import venueMap from "@/imports/VenueMap.jpg";
 import { VenueMap } from "../components/GoogleMap";
-import type { NavigateFunction } from "react-router"; 
+
 // ── Countdown ──────────────────────────────────────────────────────────────
 function getTimeLeft() {
   const diff = WEDDING_DATE.getTime() - Date.now();
@@ -31,24 +31,29 @@ function getTimeLeft() {
 
 function Countdown() {
   const [time, setTime] = useState(getTimeLeft());
+  const selectedLanguage = getTranslations();
+
   useEffect(() => {
     const id = setInterval(() => setTime(getTimeLeft()), 1000);
     return () => clearInterval(id);
   }, []);
+
   const units = [
-    { label: "Days", value: time.days },
-    { label: "Hours", value: time.hours },
-    { label: "Minutes", value: time.minutes },
-    { label: "Seconds", value: time.seconds },
+    { label: String(selectedLanguage.MAIN_PAGE.DAYS), value: time.days },
+    { label: String(selectedLanguage.MAIN_PAGE.HOURS), value: time.hours },
+    { label: String(selectedLanguage.MAIN_PAGE.MINUTES), value: time.minutes },
+    { label: String(selectedLanguage.MAIN_PAGE.SECONDS), value: time.seconds },
   ];
+
   return (
     <div className="flex gap-5 md:gap-10 justify-center">
       {units.map(({ label, value }) => (
-        <div key={label} className="flex flex-col items-center min-w-[3rem]">
+        /* Changed min-w-[3rem] to a explicit, responsive width and added text-center */
+        <div key={label} className="flex flex-col items-center w-24 md:w-32 text-center">
           <span className="tabular-nums leading-none" style={{ fontFamily: C.FONT_BLOCK(), fontSize: "clamp(2rem, 6vw, 3.5rem)", fontWeight: 400, color: C.DEEP_BLUE }}>
             {String(value).padStart(2, "0")}
           </span>
-          <span className="text-xs tracking-[0.2em] mt-2" style={{fontSize: "clamp(0.8rem, 3vw, 1.2rem)", fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>
+          <span className="text-xs tracking-[0.2em] mt-2 block w-full truncate" style={{fontSize: "clamp(0.8rem, 3vw, 1.2rem)", fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>
             {label}
           </span>
         </div>
@@ -56,6 +61,7 @@ function Countdown() {
     </div>
   );
 }
+
 
 
 
@@ -158,7 +164,7 @@ export default function Main() {
 
         {/* ── Hero ──────────────────────────────────────────────────────── */}
         <section id="details" className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden">
-          <div className="px-6 pt-28 pb-20 w-full max-w-lg mx-auto">
+          <div className="px-6 pt-40 pb-20 w-full max-w-lg mx-auto md:pt-60 md:px-10">
             <p className="text-xs mb-7 tracking-[0.25em] uppercase" style={{ fontSize: "1rem", fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>
               {selectedLanguage.MAIN_PAGE.CELEBRATE_MSG}
             </p>
@@ -174,13 +180,9 @@ export default function Main() {
             <p className="text-sm md:text-base tracking-[0.3em] uppercase mb-2" style={{fontSize: "1rem", fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>
               {selectedLanguage.DATES.WEDDING_DATE}
             </p>
-            <p className="text-xs tracking-[0.2em] uppercase mb-12" style={{fontSize: "1rem", fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>
+            <p className="text-xs tracking-[0.2em] uppercase mb-8" style={{fontSize: "1rem", fontFamily: C.FONT_BLOCK(), color: C.PURPLE }}>
               {selectedLanguage.LOCATION.VENUE_NAME}
             </p>
-            <div className="mb-12">
-              <Countdown />
-            </div>
-
             <GoldButton 
                 id="RSVP" 
                 onClickFunction={() => navigate("/RSVP")} 
@@ -191,6 +193,12 @@ export default function Main() {
                 height="5rem"
                 fontSize="clamp(1rem, 5vw, 1.5rem)">
             </GoldButton>
+
+            <div className="mt-12">
+              <Countdown />
+            </div>
+
+       
           </div>
         </section>
         {/* ── Schedule ──────────────────────────────────────────────────── */}
@@ -362,15 +370,12 @@ export default function Main() {
         <GoldDividerWithText label={selectedLanguage.MAIN.HEADERS.QUESTIONS} />
         <Section id="faq" className="px-5 md:px-10 py-14">
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-xl md:text-2xl mb-2 text-center" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>{selectedLanguage.MAIN.TEXT.FREQUENTLY_ASKED_QUESTIONS}</h2>
-            <p className="text-center text-xs tracking-wider mb-10" style={{ color: C.GREY, fontFamily: C.FONT_STANDARD(), fontSize: "1rem" }}>
-              {selectedLanguage.MAIN.TEXT.FREQUENTLY_ASKED_QUESTIONS_DETAILS}
-            </p>
+            <h2 className="text-xl md:text-2xl mb-10 text-center" style={{ fontFamily: C.FONT_BLOCK(), color: C.DEEP_BLUE }}>{selectedLanguage.MAIN.TEXT.FREQUENTLY_ASKED_QUESTIONS}</h2>
             <div className="mb-10">
               {FAQS.map((faq, i) => <FAQItem key={i} question={faq.question} answer={faq.answer} />)}
             </div>
-            <div className="text-center pt-8 border-t" style={{ borderColor: C.GOLD_BORDERS }}>
-              <p className="text-sm mb-5" style={{ color: C.GREY, fontFamily: C.FONT_STANDARD(), fontSize: "1rem", lineHeight: 1.7 }}>
+            <div className="text-center pt-5" style={{ borderColor: C.GOLD_BORDERS }}>
+              <p className="text-sm mb-3" style={{ color: C.GREY, fontFamily: C.FONT_BLOCK(), fontSize: "1rem", lineHeight: 1.7 }}>
                 {selectedLanguage.MAIN.TEXT.STILL_HAVE_QUESTIONS}
               </p>
               <p className="inline-flex items-center gap-2 text-xs tracking-[0.22em] uppercase pb-px border-b" style={{fontSize: "0.8rem", fontFamily: C.FONT_BLOCK(), color: C.DARK_GOLD, borderColor: C.GOLD }}>

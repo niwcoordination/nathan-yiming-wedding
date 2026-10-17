@@ -14,7 +14,7 @@ export async function hashName(firstName: string, lastName: string): Promise<str
 }
 
 
-export async function lookupHousehold(hashedUserId: string): Promise<string | null> {
+export async function lookupHousehold(hashedUserId: string): Promise<string | null | Error> {
   try {
     const result = await turso.execute({
       sql: `
@@ -25,22 +25,28 @@ export async function lookupHousehold(hashedUserId: string): Promise<string | nu
       args: [hashedUserId]
     });
 
+    if (result instanceof Error) {
+      return Error("Server Error");
+    }
+
     // If no authorized security record exists for this hash, safely return null
     if (result.rows.length === 0) {
       return null;
     }
 
+ 
+
     // Extract and return strictly the raw text string value of the household_id column
     return result.rows[0].household_id as string;
   } catch (error) {
     console.error("Database gateway query failed:", error);
-    return null;
+    return Error("Server Error");
   }
 }
 
 
 
-export async function fetchAllHouseholdUsers(householdID: string): Promise<any[] | null> {
+export async function fetchAllHouseholdUsers(householdID: string): Promise<any[] | null | Error> {
   try {
     const result = await turso.execute({
       sql: `
@@ -51,21 +57,28 @@ export async function fetchAllHouseholdUsers(householdID: string): Promise<any[]
       args: [householdID]
     });
 
+    if (result instanceof Error) {
+      return Error('Server Error');
+    }
+
     return result.rows;
   } catch (error) {
     console.error('Error fetching household users from Turso:', error);
-    return null;
+    return Error('Server Error');
   }
 }
 
-export async function provideResults(hash: string): Promise<Household | null> {
+export async function provideResults(hash: string): Promise<Household | null | Error> {
   // 1. Secure gateway validation (Security check happens entirely inside here)
   const householdID = await lookupHousehold(hash);
+  if (householdID instanceof Error) return Error("Server Error");
   if (!householdID) return null;
 
   // 2. Fetch the corresponding family data cleanly using the trusted ID
-  const householdUsers = await fetchAllHouseholdUsers(householdID);
-  if (!householdUsers || householdUsers.length === 0) return null;
+  const householdUsers = await fetchAllHouseholdUsers(householdID).catch((error) => {
+     return Error('Server Error: ' + error.message);
+  });
+  if (!Array.isArray(householdUsers) || householdUsers.length === 0) return null;
 
   // Safely extract the human-readable group name from the first guest array index
   const householdName = householdUsers[0].household_name as string;
@@ -92,11 +105,17 @@ export async function provideResults(hash: string): Promise<Household | null> {
 
 
 
-export async function lookupGuest({ firstName, lastName, guestId }: GuestLookupCriteria): Promise<Household | null> {
+export async function lookupGuest({ firstName, lastName, guestId }: GuestLookupCriteria): Promise<Household | null | Error> {
   if (firstName && lastName) {
-    guestId = await hashName(firstName, lastName);
+    guestId = await hashName(firstName, lastName).catch((error) => {
+      console.error("Error hashing guest name:", error);
+      return undefined;
+    });
   }
-  return await provideResults(guestId ? guestId : "");
+  return await provideResults(guestId ? guestId : "").catch((error) => {
+    console.error("Error looking up guest:", error);
+    return Error("Failed to look up guest. Please try again later.");
+  });
 }
 
 export async function submitRsvp(

@@ -21,10 +21,10 @@ export function MemberCard({
 
   return (
     <div
-      className="rounded-sm p-5 transition-all duration-300"
+      className="rounded-sm p-5 transition-all duration-300 h-auto" // Added h-auto to ensure wrapper flexes naturally
       style={{
         border: `1px solid ${isAttending ? C.GOLD_BORDERS : isDeclining ? C.GREY_BORDERS : C.GREY_BORDERS}`,
-        background: C.MINMAL_TRANSPARENT_WHITE,
+        background: C.MINIMAL_TRANSPARENT_WHITE,
       }}
     >
       {/* Name — always full width on its own row */}
@@ -79,9 +79,6 @@ export function MemberCard({
                 width={"100%"} 
                 outlineOnly={isDeclining ? false : true} 
             />
-
-      
-        
         </div>
       )}
 
@@ -95,32 +92,34 @@ export function MemberCard({
             {selectedLanguage.RSVP.FORM.DIETARY_LABEL}
           </label>
           {readOnly ? (
-            <p className="text-sm leading-relaxed" style={{ color: response.dietary ? C.GREY : C.LIGHT_GREY , fontSize: "1rem", fontFamily: C.FONT_STANDARD()}}>
+            /* Using break-words to ensure ultra-long strings or single words do not snap layout */
+            <p className="text-sm leading-relaxed break-words" style={{ color: response.dietary ? C.GREY : C.LIGHT_GREY , fontSize: "1rem", fontFamily: C.FONT_STANDARD()}}>
               {response.dietary || selectedLanguage.RSVP.FORM.DIETARY_NONE}
             </p>
           ) : (
-            <textarea
-              rows={2}
-              placeholder={selectedLanguage.RSVP.FORM.DIETARY_HINT}
-              value={response.dietary}
-              onChange={(e) => onChange({ ...response, dietary: e.target.value })}
-              className="w-full text-sm resize-none outline-none px-3 py-2.5 transition-all duration-200"
-              style={{
-                fontSize: "1rem",
-                fontFamily: C.FONT_STANDARD(),
-                color: C.GREY,
-                border: `1px solid ${C.GOLD_BORDERS}`,
-                borderRadius: "2px",
-                background: C.MINMAL_TRANSPARENT_WHITE,
-              }}
+            /* Replacing textarea with a container that grows with user text input */
+            <div className="grid text-sm">
+              <textarea
+                placeholder={selectedLanguage.RSVP.FORM.DIETARY_HINT}
+                value={response.dietary}
+                onChange={(e) => onChange({ ...response, dietary: e.target.value })}
+                rows={2}
+                className="w-full min-h-[60px] h-auto resize-y text-sm outline-none px-3 py-2.5 transition-all duration-200"
+                style={{
+                  fontSize: "1rem",
+                  fontFamily: C.FONT_STANDARD(),
+                  color: C.GREY,
+                  border: `1px solid ${C.GOLD_BORDERS}`,
+                  borderRadius: "2px",
+                  background: C.MINIMAL_TRANSPARENT_WHITE,
+                }}
                 onFocus={(e) => (e.target.style.borderColor = `${C.GOLD_BORDERS}`)}
                 onBlur={(e) => (e.target.style.borderColor = `${C.GOLD_LIGHT_BACKGROUND}`)}
-            />
+              />
+            </div>
           )}
-          
         </div>
       )}
     </div>
   );
 }
-

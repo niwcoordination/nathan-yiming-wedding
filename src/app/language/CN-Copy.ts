@@ -13,7 +13,7 @@ export const zh: Translation = {
     { label: "常见问题", id: "faq" },
   ],
   SCHEDULE: [
-  { time: "2:30 PM", event: "宾客入场与入住", detail: "园区内住宿开放办理入住。请先放下行李，稍作安顿，准备迎接接下来的精彩活动。" },
+  // { time: "2:30 PM", event: "宾客入场与入住", detail: "园区内住宿开放办理入住。请先放下行李，稍作安顿，准备迎接接下来的精彩活动。" }, NOT NEEDED AS WE ARE PROVIDING TRANSPORTATION FROM MELBOURNE CBD //✅
   { time: "3:00 PM", event: "宾客就座", detail: "请前往观礼区依序就座。" },
   { time: "3:30 PM", event: "婚礼仪式", detail: "婚礼仪式正式开始。" },
   { time: "4:00 PM", event: "集体合影", detail: "仪式结束后，请大家稍作停留，我们一起合影留念。" },
@@ -34,7 +34,6 @@ export const zh: Translation = {
     { question: "What if the weather is bad?", answer: "Our ceremony and receptiona re both planned indoors with heaters. The celebration will proceed beautifully regardless of weather." }
   ],  
   NAV: {
-    GO_BACK:"后退",
     SWITCH_LANGUAGE:"Switch Language",
     SWITCH_LANGUAGE_SHORT:"EN",
     RSVP:"期待回复"
@@ -70,29 +69,24 @@ export const zh: Translation = {
         "We have a strict no gifts or red packets policy.", //This will be colored and bold the main page 
         "Your presence, laughter, and shared joy is all it will take to make our day perfect."], //'We celebrate only for your company. Please know that we will not accept any gifts, red pockets, etc. Your laughter, company, and shared joy are all we need to make this day perfect.',
       FREQUENTLY_ASKED_QUESTIONS: "常见问题",
-      FREQUENTLY_ASKED_QUESTIONS_DETAILS: "关于婚礼当日您需要了解的一切。",
       STILL_HAVE_QUESTIONS: "仍有疑问？我们非常期待收到您的消息。",
       GET_IN_TOUCH: "与我们联系",
     }
   },
   RSVP: {
     SEARCH: {
-      HERO_MESSAGE: "诚挚邀请您",
-      INTRO: "请输入您的姓名以查找邀请函，并确认您及家人的出席情况。",
+      INTRO: "请输入您的姓名以查找邀请函并确认您及家人的出席情况",
       FIRST_NAME: "姓氏", //Switched due to normal way of writing names. Matches Database
       LAST_NAME: "名字",  //Switched due to normal way of writing names. Matches Database
       BTN: "查找我的邀请函",
       NOT_FOUND: "未找到该姓名的宾客。请检查拼写是否正确 —— 如果仍有问题，请直接与我们联系。",
       MISSING_NAME: "请输入名字和姓氏。",
       CANT_FIND: "找不到您的邀请函？",
-      CONTACT_LINK: "与我们联系",
       DEADLINE_LABEL: "回复截止日期",
     },
     FORM: {
       YOUR_INVITATION: "您的专属邀请函",
       INTRO: "请在下方确认每位宾客的的出席情况和饮食要求。",
-      BTN_ACCEPT_ALL: "全部接受",
-      BTN_DECLINE_ALL: "全部谢绝",
       BTN_ATTENDING: "出席",
       BTN_DECLINE: "谢绝",
       DIETARY_LABEL: "饮食要求",
@@ -128,11 +122,9 @@ export const zh: Translation = {
   DATES: {
     WEDDING_DATE: format(WEDDING_DATE, 'PPP', { locale: zhCN }),
     CUTOFF_RSVP_DATE: format(RSVP_CUTOFF_DATE, 'PPP', { locale: zhCN }),
-    CEREMONY_START_TIME: "15:30"
   },
   LOCATION:{
     VENUE_NAME: "雅拉谷 Immerse 庄园",
-    VENUE_NAME_SHORT: "雅拉谷 Immerse 庄园",
   },
   INVITATION: {
     INVITATION_HEADER: ["诚挚的邀请您", "参加我们的婚礼"],
@@ -144,6 +136,10 @@ export const zh: Translation = {
     DETAILS_BODY: "如需了解更多关于招待会、交通指引、着装要求及住宿的信息，请访问我们的网站:"
   },
   MAIN_PAGE: {
-    CELEBRATE_MSG: "我们迫不及待地想和你们一起庆祝!"
+    CELEBRATE_MSG: "我们迫不及待地想和你们一起庆祝!", //We can't wait to celebrate with you!
+    DAYS: "天",
+    HOURS: "小时",
+    MINUTES: "分钟",
+    SECONDS: "秒"
   }
 };

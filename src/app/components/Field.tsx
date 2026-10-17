@@ -29,7 +29,7 @@ export function Field({
           fontFamily: C.FONT_STANDARD(),
           border: `1px solid ${C.GOLD_BORDERS}`,
           borderRadius: "2px",
-          background: C.MINMAL_TRANSPARENT_WHITE,
+          background: C.MINIMAL_TRANSPARENT_WHITE,
           color: C.DARK_GREY,
           fontSize: "0.9rem",
         }}
